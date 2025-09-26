@@ -25,6 +25,9 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
+from pycaret.anomaly import *
+
+
 import pandas as pd
 from module.dataTransformer import combineData
 from module.fetcher import fetchDataMysql, fetchDataPg
@@ -39,14 +42,14 @@ iris_df
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m/tmp/ipython-input-1272625483.py[0m in [0;36m<cell line: 0>[0;34m()[0m
-[1;32m      1[0m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 2[0;31m [0;32mfrom[0m [0mmodule[0m[0;34m.[0m[0mdataTransformer[0m [0;32mimport[0m [0mcombineData[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      3[0m [0;32mfrom[0m [0mmodule[0m[0;34m.[0m[0mfetcher[0m [0;32mimport[0m [0mfetchDataMysql[0m[0;34m,[0m [0mfetchDataPg[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m [0;34m[0m[0m
-[1;32m      5[0m [0mdata_pg[0m [0;34m=[0m [0mfetchDataPg[0m[0;34m([0m[0;34m"SELECT petal_length, petal_width, species FROM iris_table"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/tmp/ipython-input-3791188725.py[0m in [0;36m<cell line: 0>[0;34m()[0m
+[0;32m----> 1[0;31m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0manomaly[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0;34m[0m[0m
+[1;32m      3[0m [0;34m[0m[0m
+[1;32m      4[0m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;32mfrom[0m [0mmodule[0m[0;34m.[0m[0mdataTransformer[0m [0;32mimport[0m [0mcombineData[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mModuleNotFoundError[0m: No module named 'module'
+[0;31mModuleNotFoundError[0m: No module named 'pycaret'
 
 [0;31m---------------------------------------------------------------------------[0;32m
 NOTE: If your import is failing due to a missing package, you can
