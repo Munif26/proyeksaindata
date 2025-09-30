@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'penyeimbangdata_ucldataecoli';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Model Klasifikasi pada Dataset Ecoli" href="model_klasifikasi.html" />
     <link rel="prev" title="Preprocessing" href="preprocessing_data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,6 +184,15 @@
 
 <li class="toctree-l1"><a class="reference internal" href="preprocessing_data.html"><strong>Preprocessing</strong></a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Penyeimbang Data (Data UCL Ecoli)</strong></a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="model_klasifikasi.html"><strong>Model Klasifikasi pada Dataset Ecoli</strong></a></li>
+
+
+
 
 
 
@@ -400,6 +410,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-perbandingan"><strong>Melakukan Perbandingan</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penyeimbangan-data-menggunakan-naive-bayes"><strong>Penyeimbangan Data Menggunakan Naive Bayes</strong></a></li>
 </ul>
 
             </nav>
@@ -1139,6 +1150,99 @@ from collections import Counter</p>
 </div>
 <p><img alt="image.png" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAmIAAADRCAYAAABvl94UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAADV/SURBVHhe7d0HnFTlucfxh7KwlGWXvnSQJiBFBBQERBQsXCuJURNLvElETbxRY+LNNbkmscTEeI1dCWqiERUrIr13EUF6l7LUpW1je7n7ezlnHWB3ndkdnGX3/+VzmDlnzp455X3f53nPOTNT7f1JMwpMRERERL5z1b1HEREREfmOKRETERERiRAlYiIiIiIRcsI9Ym3im3jPRERERCScEvYf8p5945RErFFsfW9MRERERMLhSHJasYmYLk2KiIiIRIgSMU9BQYGlpaXZoUOHLCUlxfLz8930ffv2uUcf82VnZ3tjx+Xl5VlycrKbnpiY6E0tXW5urh08eNAbM8vJybHMzEy3/KSkpKL3hz+N9wkG87Idx44d86aciOXw/t+G/VDce7KfWNfdu3d7U6SyouxRDihPqampReUysOyiuHpBmaZe8HjkyBFvaumY98CBA97Y8fGsrCy3fJbBo491OXz4sDf27Y4ePermL2+9CNwPbB/7hjoRuG6B87BfWHfm4TnbBLaLeuTvG8b91+TMx/EPbIspH5QxymGg4uoO45QtygSPwaDsnBxTGFg+63Fy3Tm5DpeEeSmj1J2MjAxv6onYruJiRSDKP8thnahn1BHWieX79YWB7WXgNfYb68nAfmR/+OP8TWVR44abb33Ee26x9etaneha3ljVQuF4//337euvv7bNmze7hKpt27a2aNEi69y5szfX8cby3Xfftd69e3tTzBVO/o5ljB071oYNG+a9UjIK2FdffWUdOnRw47znF1984abPnz/fzjnnHKtRo4Z7jeWOHz/eOnbsaHXq1HHTSvOXv/zFFfqVK1e6At2+fXvvleN4r61bt1qbNm28Kafi7//617+6v23UqJE39bhp06a5bV6zZo316NHDmyqVEcf5zTffdA0fx5tyQbmhrAaWK+Z74403rF+/ft6U48nIzp07XaNLnbngggu8V0rG8r/88ktX1rFu3TrbsGGD7d+/35YsWWI9e/a06tWP9x95z9dee80GDhzoxktDo/7MM8+4+rBixQoX6Fq3bu29ehzvtXfvXmvZsqU35VT8/bPPPuvahHr16rn6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rcusWbPstttus+eff94aNWpk3bp1s3379tnOnTuLPmkcExNjrVq1KkrMRESk6lEiJhJGnN3i57+4F6x169buY/ijR492X4D8q1/9yu6//373BZUiIiJQIiYiIiISIUrERERERCJEiZiIiIhIhCgRExEREYkQJWIiIiIiEaJETERERCRClIiJiIiIRIgSMREREZEIUSImIiIiEiFKxEREREQiRImYiIiISIQEnYglJCTYzJkzbcaMGe6HjadNm+aGpKQkbw4REZGy279/v/vB/E8//dRSU1Nt3rx5NmnSJDt8+LA3h0jlE3QitnLlSouLi7PNmze7hIwfMW7atKktXbrUvZ6fn2+5ublWUFDgxkVEREJBfKlevbpt2bLF5s6da+np6da1a1cXc0CcycnJUZyRSiXoRKxx48Y2efJk12OhcrRr184lYpmZme71TZs22dixYy05OdmNi4iIhCI2NtYWLlxou3btsry8PBdjWrZsaceOHXOvM504s3fvXjcuUhkEnYiRYPXs2dNat25tjRo1sgULFtiSJUusRYsW7vVu3brZXXfd5c6aiYiIhIqEq2PHjta5c2erXbu2rVu3zqZOnWpt27Z1r7dv397uvvtua9WqlRsXqQyCTsQuuugiGzRokF1zzTU2YsQIu/LKK23o0KHWt29fbw4REZGyI55ccskldt1119mll17q4szAgQNdrBGprIJOxOrVq2fNmze3+Ph4i4qKco/+80j606T1ZR7GLtjuLUUk/LiXhUsoBw8edPe08Lhv3z53n4uInCo6OtrFGS5HElv8S5O1atXy5hCpfIJOxCqqt5ftKvMwbd1+byki4bd27VobP368vfnmm5aRkWGvvfaaffDBB7Zz505vDhERqerO+ERMpKJq0qSJbdu2zSVhfPye8QEDBtiaNWvc6ytWrLAXX3zRtm7d6sZFRKTqUSImcprMnj3bbr31VvfhFj4Nxgde9uzZU3Sjce/eve2nP/2pnXXWWW5cRESqHiViIqfJqFGjLDEx0X2imHss+/Xr5z4J1qtXL/c638XHfTB8b5KIiFRNigAipwmXIq+++mobNmyYS7r45BefAov0B1xERKTiUCImIiIiEiFKxEREREQiRImYiIiISIQoEROpYqpV855UUBV9/UREwkmJmIiIiEiEKBETERERiRAlYiIiIiIRokRMREREJEKUiImIiIhEiBIxERERkQhRIiYiIiISIUrERERERCIk6EQsJSXFPvnkE/voo48sNTXVJk6caBMmTLDk5GRvDhERkbI7duyYTZkyxd5++20XZ6ZPn25vvfWWHTlyxJtDpPIJOhGbOnWqJSQkWI0aNWz58uUWHR1tHTt2tEWLFrnXCwoKLD8/3z2KiIiEasmSJbZ27VqrWbOmrV+/3rKzs+2CCy6wadOmudf9OCNSmQSdiHHmiwoBErH27dtbs2bNXEXBhg0b7OWXX9YZMhERKRPOiPXq1ct19JcuXWrx8fHWsmVLy8jIcK/v2LHDXnrpJduzZ48bF6kMgk7ESLzS0tIsMTHR+vfvb4sXL7Y1a9a4ioLu3bvb3XffbXFxcW5cREQkFMSTvLw8l2j16dPHdfCJNW3atHGvd+jQwe655x5r1aqVGxepDIJOxIYNG+aSrBEjRrjngwcPdpVjwIAB3hwiEohLKDNmzLBly5a55/Pnz7fJkydbTk6ON4eIBDrvvPOsXbt2NnLkSLvoootsyJAh1rhxYxs+fLg3h0jlE3QiFhUV5XooVBJ06tTJzjnnHKtePehFiFQpc+bMsS+++MLS09PdJXwu6WdlZdnq1au9OUQkEPeG9ejRw91/DK7EnHvuue7eZJHKSlmUyGnCzcZNmza1lStXukv6sbGx7pKKf3/Ll19+aS+88IJt3brVjYuISNWjREzkNBk0aJA7E0Yvv0mTJnbo0CF3mbJnz57udXr6Y8aMKer9i4hI1aNETOQ0IdG67rrr7KabbrI6derYHXfcYaNHjy66vM9lfS65VKtWzY2LiEjVo0RM5DQh0eKj95wNI9niMmWLFi10X6WIiBRRRBARERGJECViUmF9uGK3Xf38wjIPczYmeksSERGpmJSISYV1JD3HtiSmlXlIzdT3dYmISMWmRExEREQkQpSIiYiIiESIEjERERGRCFEiJiIiIhIhSsREREREIkSJmIiIiEiEKBETERERiRAlYiIiIiIRokRMREREJEKUiImIiIhESMiJ2KxZsyw5OdnmzJlj06dPt/z8fO8VERGR8ps6daodOXLElixZYhMnTrS8vDzvFZHKJ+hEjIRr9uzZroJMnjzZkpKS3PQFCxa4x8zMTDt48KDl5ua6cRERkVAUFBS45GvSpEmu079nzx6LjY11MQfZ2dmKM1LpBJ2Ibdq0yZYuXWoxMTG2atUq69evn3Xv3t2OHj3qXqf3snr1asvKynLjIiIiodi5c6ctXLjQmjRp4uJJ165drX///i75AldjmJ6amurGRSqDoBOx5s2b2+jRo10i1qFDB1u+fLmtX7/eGjZs6F5v2bKlDR8+3OrVq+fGRcTswIED9thjj7me/LPPPmtPPvmk5eTkeK+KSKBGjRrZNddc4+JM27Zt3QkAYg2JGZo2berijB93RCqDoBMxKgi9k6uuuspuvPFGi4uLc9OHDBniHlGtWjXvmYhwmWXdunWWkZFh+/fvtzp16tg555xja9euda/Tq+fSC5f1RcSsQYMG1qVLF7v66qtdx79Vq1buNphRo0Z5cyjOSOUT8s36nTp1ctfsL774Yhs5cqRVrx7yIkSqBBItLuenp6e7hKxWrVpu8C/fE2C2bNliKSkpblxEjuvcubPr/A8cONAlZTVq1PBeEal8lEWJnCZ169a1O+64w1q3bm19+/a1HTt22Lx586xHjx7u9TZt2tiwYcOsWbNmblxERKoeJWJnkKycPDuSnlPmITVT9yZ9l2rWrGnx8fF2//33u3ss//d//9ceffRRd/+LiIgIlIidQeZsPmj3vbOizMPfZ231liQiIiIVgRKxM8j+5ExbtuNomYcN+3QvkoiISEWiRExEREQkQpSIiYiIiESIEjERERGRCFEiJiIiIhIhSsREREREIkSJmIiIiEiEKBETkQqloMB7IiJSBSgRExEREYkQJWIiIiIiEaJETERERCRClIiJiIiIRIgSMREREZEIUSImUsXoU4kiIhVH0InY1q1bbcaMGTZ//nxLT0+3qVOn2rRp0yw1NdWbQ0REpOwSEhJcnJk+fbplZmbanDlz7NNPP7WkpCRvDpHKJ+hELD4+3nr16mVLliyxefPmWUxMjDVq1Mg+//xzbw4REZGya9KkiYszCxcutGXLllleXp517NjRZs2a5c0hUvkEnYjVqVPH9u7da7GxsZaVlWVt27Z1ydmxY8fc6+vXr7cXX3xRPZczyNR1++1Pk9aXeZi54YC3JCnO4sWL7YknnrBx48ZZdna2PfLII/a73/2u6CxyQUGBG0TkuFq1atmhQ4esfv36rm40b97cxZqUlBT3+vbt2+2FF16wPXv2uHGRyiDoRIweyuuvv249evSw1q1b29y5c23RokXWqlUr93q3bt1szJgxLlGTM8OXO47a28t2lXlYuUtJd2kGDRpkP/nJTyw6Otp2795tHTp0sKFDh9q6devc67t27bLZs2fbgQNKaEWwatUq+8c//mHnnXeeOzvG+OTJk91ZMbRv397uuuuuorgjUhkEnYj17NnTHnroIevevbv17t3bRowYYcOGDXPPUa1aNatevbp7FJHjZ7wmTpxoAwYMsHr16rmzYgy1a9d2rzdt2tTVq7i4ODcuUtV16tTJHnjgAXd5skuXLjZy5EgbPHiwDRw40L3uxxmRyiToEs39YC1btrTGjRtbVFSUuyzJwHMRORU3Ga9YscK++OILV28yMjJs7dq1ds4557jX69ata82aNStKzESqugYNGrgrLnRSiC3UD+KO4oxUZupaiJwmV199tbuf5eabb7aaNWvavffea7/5zW8UVEREpIgSMREREZEIUSImIiIiEiFKxEREREQiRImYiIiISIQoERMRERGJECViIiIiIhGiRExEREQkQpSIiYiIiESIEjERERGRCFEiJiIiIhIhSsREREREIkSJmIiIiEiEKBGTsElMzbLxn+8q87A1Mc1bkoiISNWgREzCZueRY/bHz9aXeVi+46i3JBERkapBiZiIiIhIhCgRExEREYmQMidiycnJtm/fPktNTfWmnPmWfH3Yzn98lnX7/dQyD4FW704udp5gh5/+6ws7lp3rLU3OdOnp6bZnz55KVWdETifqCnEmKSnJmyJS+ZQpESsoKLBx48bZkiVLbObMmZadne2m5efnuyE3N7fYIS83zwoKXy/I5zH0IT+vwHLz8k5YZnHzhTIELiuvcCh8k2LnC3Y4YXnFvB7SkMe+/GaZ+YXbXux8QQ8nHpv8YucJfmB9TlieO75lH1ifwOUVlHN789z++2Z5gUNe4bK/a9SVefPm2YsvvujGqSusx7fVm+K2LZQhcFm8X3nqIENefnjXj3bBXxZlqnBnFDtfUMNJx/z49pZjKPz7wOXl55Vze09eXnnrzEnLyyvvsS3cvsDlBQ5uXxa289+ld99915YvX26TJ092HRne368zxa2jGwrLQHHbFvxQWB9P2q/FzxfcUPifW2d/Wezj4uYLZQhct+NxtXxD4HHPzy3v/itm/Sg7xcwXzHByXCjv9p4St4qZJ5Th5PULHDjuwaj2/qQZRTWrTXwTaxRb3xsrWU5Ojj366KP24IMP2vTp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" /></p>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="penyeimbangan-data-menggunakan-naive-bayes">
+<h1><strong>Penyeimbangan Data Menggunakan Naive Bayes</strong><a class="headerlink" href="#penyeimbangan-data-menggunakan-naive-bayes" title="Link to this heading">#</a></h1>
+<p>Kita akan gunakan GaussianNB dari sklearn.naive_bayes karena dataset Ecoli berisi fitur numerik kontinu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#1. Import Library</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2. Fungsi Evaluasi</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluasi_model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;=== Hasil Evaluasi Naive Bayes </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2"> ===&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="c1"># Plot confusion matrix</span>
+    <span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+    <span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">xticks_rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Confusion Matrix </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#3. Evaluasi sebelum penyeimbangan</span>
+
+<span class="n">X_asli</span> <span class="o">=</span> <span class="n">ecoli_df</span><span class="p">[</span><span class="n">fitur</span><span class="p">]</span>
+<span class="n">y_asli</span> <span class="o">=</span> <span class="n">ecoli_df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span>
+
+<span class="n">evaluasi_model</span><span class="p">(</span><span class="n">X_asli</span><span class="p">,</span> <span class="n">y_asli</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(Data Asli)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipython-input-2553284643.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#3. Evaluasi sebelum penyeimbangan</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">X_asli</span> <span class="o">=</span> <span class="n">ecoli_df</span><span class="p">[</span><span class="n">fitur</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">y_asli</span> <span class="o">=</span> <span class="n">ecoli_df</span><span class="p">[</span><span class="s2">&quot;class&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+
+<span class="ne">NameError</span>: name &#39;ecoli_df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#4. Evaluasi setelah oversampling ADYSIN</span>
+
+<span class="n">evaluasi_model</span><span class="p">(</span><span class="n">x_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(Setelah ADASYN)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipython-input-4197673077.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#4. Evaluasi setelah oversampling ADYSIN</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">evaluasi_model</span><span class="p">(</span><span class="n">x_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(Setelah ADASYN)&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;x_resampled&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#5. Evaluasi setelah oversampling SMOTE</span>
+
+<span class="n">evaluasi_model</span><span class="p">(</span><span class="n">p_resampled</span><span class="p">,</span> <span class="n">q_resampled</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;(Setelah SMOTE)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1179,6 +1283,15 @@ from collections import Counter</p>
         <p class="prev-next-title"><strong>Preprocessing</strong></p>
       </div>
     </a>
+    <a class="right-next"
+       href="model_klasifikasi.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Model Klasifikasi pada Dataset Ecoli</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1213,6 +1326,7 @@ from collections import Counter</p>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-perbandingan"><strong>Melakukan Perbandingan</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#penyeimbangan-data-menggunakan-naive-bayes"><strong>Penyeimbangan Data Menggunakan Naive Bayes</strong></a></li>
 </ul>
 
   </nav></div>
