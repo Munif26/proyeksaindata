@@ -1,0 +1,108 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# ==========================
+# Tahap 1: Pengumpulan Data
+# ==========================
+import openeo
+import pandas as pd
+import matplotlib.pyplot as plt
+import warnings
+warnings.filterwarnings("ignore")
+
+# Autentikasi ke platform OpenEO Copernicus
+connection = openeo.connect("openeo.dataspace.copernicus.eu").authenticate_oidc()
+
+# Area of Interest (AOI)
+aoi_geojson = {
+    "type": "Polygon",
+    "coordinates": [[
+        [111.84013944486253, -7.112176997696622],
+        [111.84013944486253, -7.201964283327371],
+        [111.93244545164555, -7.201964283327371],
+        [111.93244545164555, -7.112176997696622],
+        [111.84013944486253, -7.112176997696622]
+    ]]
+}
+
+# Ambil data NO₂ Sentinel-5P
+s5post = connection.load_collection(
+    "SENTINEL_5P_L2",
+    temporal_extent=["2025-06-01", "2025-10-19"],
+    spatial_extent={"west": 111.84013944486253, "south": -7.201964283327371,
+                    "east": 111.93244545164555, "north": -7.112176997696622},
+    bands=["NO2"]
+)
+
+# Masking nilai negatif
+def mask_invalid(x):
+    return x < 0
+
+s5p_masked = s5post.mask(s5post.apply(mask_invalid))
+
+# Agregasi harian dan spasial
+daily_mean = s5p_masked.aggregate_temporal_period(period="day", reducer="mean")
+daily_mean_aoi = daily_mean.aggregate_spatial(geometries=aoi_geojson, reducer="mean")
+
+# Eksekusi batch dan unduh hasil dalam format CSV
+job = daily_mean_aoi.execute_batch(out_format="CSV")
+results = job.get_results()
+results.download_files("no2_bojonegoro_dataset")
+
+# Baca hasil
+df = pd.read_csv("no2_bojonegoro_dataset/timeseries.csv")
+df["date"] = pd.to_datetime(df["date"])
+df["month"] = df["date"].dt.to_period("M")
+
+# Hitung rata-rata bulanan
+df_monthly = df.groupby("month", as_index=False)["NO2"].mean()
+
+# Visualisasi tren bulanan
+plt.figure(figsize=(10,5))
+plt.plot(df_monthly["month"].astype(str), df_monthly["NO2"], marker="o", color="blue")
+plt.title("Rata-rata Bulanan NO₂ di Bojonegoro (Sentinel-5P)")
+plt.xlabel("Bulan")
+plt.ylabel("Konsentrasi NO₂")
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.show()
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m/tmp/ipython-input-2060692589.py[0m in [0;36m<cell line: 0>[0;34m()[0m
+[1;32m      2[0m [0;31m# Tahap 1: Pengumpulan Data[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;31m# ==========================[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 4[0;31m [0;32mimport[0m [0mopeneo[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      5[0m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0;32mimport[0m [0mmatplotlib[0m[0;34m.[0m[0mpyplot[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'openeo'
+
+[0;31m---------------------------------------------------------------------------[0;32m
+NOTE: If your import is failing due to a missing package, you can
+manually install dependencies using either !pip or !apt.
+
+To view examples of installing some common dependencies, click the
+"Open Examples" button below.
+[0;31m---------------------------------------------------------------------------[0m
+
+
