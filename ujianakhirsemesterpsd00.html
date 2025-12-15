@@ -1,0 +1,1364 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>UAS Proyek: Klasifikasi Time Series Gerakan Tangan Menggunakan Dataset SemgHandMovementCh2 &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ujianakhirsemesterpsd00';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to Proyek Sain Data
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="business_data_understanding.html"><strong>Business Understanding</strong></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="preprocessing_data.html"><strong>Preprocessing</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="penyeimbangdata_ucldataecoli.html"><strong>Penyeimbang Data (Data UCL Ecoli)</strong></a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="model_klasifikasi.html"><strong>Model Klasifikasi pada Dataset Ecoli</strong></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="knime_konstanz_information_miner.html"><strong>PROYEK PRA UTS PROYEK SAIN DATA</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="proyek_ujian_tengah_sementer_psd.html"><strong>UTS : Proyek Sains Data — Deteksi Penyakit Tiroid</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="prediksi_konsentrasino2_diarea_bjn.html"><strong>Prediksi Konsentrasi NO₂ di Kabupaten Bojonegoro dengan KNN Regression</strong></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="ujianakhirsemesterpsd.html"><strong>1. Business Understanding (Memahami Bisnis)</strong></a></li>
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fujianakhirsemesterpsd00.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ujianakhirsemesterpsd00.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>UAS Proyek: Klasifikasi Time Series Gerakan Tangan Menggunakan Dataset SemgHandMovementCh2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>UAS Proyek: Klasifikasi Time Series Gerakan Tangan Menggunakan Dataset SemgHandMovementCh2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-business-understanding"><strong>A. BUSINESS UNDERSTANDING</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang-bisnis"><strong>1. Latar Belakang Bisnis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permasalahan-bisnis"><strong>2. Permasalahan Bisnis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-bisnis"><strong>3. Tujuan Bisnis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriteria-kesuksesan-bisnis"><strong>4. Kriteria Kesuksesan Bisnis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pernyataan-masalah-data-science"><strong>5. Pernyataan Masalah Data Science</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-data-science"><strong>6. Tujuan Data Science</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriteria-evaluasi-teknis"><strong>7. Kriteria Evaluasi Teknis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asumsi-dan-batasan"><strong>8. Asumsi dan Batasan</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risiko-dan-mitigasi"><strong>9. Risiko dan Mitigasi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-dan-asal-usul-dataset"><strong>10. Sumber dan Asal Usul Dataset</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b-data-understanding"><strong>B. DATA UNDERSTANDING</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-akuisisi-data"><strong>1. Deskripsi Akuisisi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kode-untuk-load-dan-inspeksi-data"><strong>2. Kode untuk Load dan Inspeksi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi"><strong>3. Visualisasi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-hasil-eksplorasi-data"><strong>4. Insight Hasil Eksplorasi Data</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#c-data-preprocessing"><strong>C. DATA PREPROCESSING</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-modeling-dan-evaluasi"><strong>D. MODELING DAN EVALUASI</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-1-nearest-neighbor-1-nn-dengan-jarak-euclidean"><strong>1. Model 1-Nearest Neighbor (1-NN) dengan Jarak Euclidean</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-1-nearest-neighbor-1-nn-dengan-dynamic-time-warping-dtw"><strong>2. Model 1-Nearest Neighbor (1-NN) dengan Dynamic Time Warping (DTW)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-random-forest"><strong>3. (Model Random Forest:)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-advanced-cnn-untuk-time-series"><strong>4. (Model Advanced: CNN untuk Time Series:</strong>)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#e-deployment-model"><strong>E. DEPLOYMENT MODEL</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpan-model-terbaik"><strong>1. Simpan Model Terbaik</strong></a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="uas-proyek-klasifikasi-time-series-gerakan-tangan-menggunakan-dataset-semghandmovementch2">
+<h1><strong>UAS Proyek: Klasifikasi Time Series Gerakan Tangan Menggunakan Dataset SemgHandMovementCh2</strong><a class="headerlink" href="#uas-proyek-klasifikasi-time-series-gerakan-tangan-menggunakan-dataset-semghandmovementch2" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="a-business-understanding">
+<h1><strong>A. BUSINESS UNDERSTANDING</strong><a class="headerlink" href="#a-business-understanding" title="Permalink to this heading">#</a></h1>
+<section id="latar-belakang-bisnis">
+<h2><strong>1. Latar Belakang Bisnis</strong><a class="headerlink" href="#latar-belakang-bisnis" title="Permalink to this heading">#</a></h2>
+<p>Klasifikasi gerakan tangan berbasis sinyal <em>surface electromyography</em> (sEMG) merupakan salah satu topik penting dalam pengembangan teknologi kesehatan modern, khususnya pada bidang rehabilitasi medis, sistem prostetik cerdas, serta interaksi manusia dan mesin (<em>human–machine interaction</em>). Sinyal sEMG merekam aktivitas listrik yang dihasilkan oleh kontraksi otot rangka di permukaan kulit saat seseorang melakukan suatu gerakan. Informasi ini bersifat dinamis dan kontinu sehingga dapat direpresentasikan dalam bentuk <em>time series</em> yang menggambarkan perubahan aktivitas otot dari waktu ke waktu.</p>
+<p>Dalam konteks gerakan tangan, sinyal sEMG dapat digunakan untuk membedakan berbagai jenis pola gerakan, seperti <em>cylindrical</em> (pegangan silinder), <em>hook</em> (gerakan kait), <em>tip</em> (gerakan ujung jari), <em>palmar</em> (gerakan telapak), <em>spherical</em> (gerakan menggenggam bola), dan <em>lateral</em> (gerakan menyamping). Setiap jenis gerakan tersebut memiliki karakteristik sinyal yang berbeda, baik dari segi amplitudo, frekuensi, maupun pola temporalnya. Namun, kompleksitas sinyal sEMG yang bersifat non-linier dan mengandung noise membuat proses identifikasi gerakan secara manual menjadi sulit, memerlukan keahlian khusus, serta berpotensi menghasilkan interpretasi yang tidak konsisten.</p>
+<p>Dataset <strong>SemgHandMovementCh2</strong> menyediakan data sinyal sEMG satu dimensi dari channel kedua yang telah diolah menjadi bentuk <em>power spectrum</em>, sehingga sangat relevan untuk pengembangan sistem klasifikasi gerakan tangan secara otomatis. Pemanfaatan dataset ini memungkinkan pembangunan model yang mampu mengenali pola gerakan tangan dengan lebih objektif dan konsisten. Secara bisnis dan aplikatif, sistem klasifikasi ini dapat digunakan untuk mendukung kontrol prostetik berbasis sinyal otot, meningkatkan efektivitas terapi rehabilitasi pasien dengan gangguan motorik, serta menjadi dasar pengembangan antarmuka manusia–komputer yang lebih natural dan responsif.</p>
+<p>Seiring dengan meningkatnya kebutuhan akan sistem analisis yang cepat, akurat, dan dapat diimplementasikan secara praktis, pendekatan <em>machine learning</em> dan <em>deep learning</em> pada data <em>time series</em> menjadi solusi yang relevan. Dengan memanfaatkan teknik klasifikasi time series, proses pengenalan gerakan tangan dapat dilakukan secara otomatis, efisien, dan berskala besar. Oleh karena itu, proyek ini berfokus pada pengembangan model klasifikasi berbasis data sEMG untuk mendukung pengambilan keputusan dan aplikasi nyata di bidang kesehatan dan teknologi, sekaligus memenuhi kebutuhan analisis data dalam konteks proyek sains data.</p>
+</section>
+<section id="permasalahan-bisnis">
+<h2><strong>2. Permasalahan Bisnis</strong><a class="headerlink" href="#permasalahan-bisnis" title="Permalink to this heading">#</a></h2>
+<p>Proses klasifikasi gerakan tangan berdasarkan sinyal sEMG yang dilakukan secara manual memiliki berbagai keterbatasan, terutama dari sisi efisiensi dan konsistensi hasil. Analisis manual sinyal sEMG membutuhkan waktu yang relatif lama karena setiap sinyal harus diamati dan diinterpretasikan oleh tenaga ahli. Selain itu, pendekatan manual sangat bergantung pada pengalaman dan subjektivitas analis, sehingga hasil klasifikasi berpotensi berbeda antara satu analis dengan analis lainnya.</p>
+<p>Permasalahan ini menjadi semakin kompleks ketika sistem klasifikasi harus diterapkan dalam skenario real-time, seperti pada kontrol prostetik atau sistem interaksi manusia–komputer. Tanpa adanya model klasifikasi otomatis, integrasi sinyal sEMG ke dalam sistem digital yang responsif dan cepat menjadi sulit dilakukan. Oleh karena itu, permasalahan bisnis utama dalam proyek ini adalah bagaimana membangun sistem yang mampu mengklasifikasikan enam jenis gerakan tangan secara otomatis dan akurat dengan memanfaatkan pola time series dari sinyal sEMG.</p>
+</section>
+<section id="tujuan-bisnis">
+<h2><strong>3. Tujuan Bisnis</strong><a class="headerlink" href="#tujuan-bisnis" title="Permalink to this heading">#</a></h2>
+<p>Tujuan bisnis dari proyek ini adalah menyediakan sebuah sistem klasifikasi gerakan tangan yang dapat memprediksi jenis gerakan secara otomatis berdasarkan sinyal sEMG. Dengan adanya sistem ini, proses analisis yang sebelumnya memakan waktu lama dapat dipercepat secara signifikan, sehingga meningkatkan efisiensi dalam berbagai aplikasi praktis.</p>
+<p>Selain itu, sistem klasifikasi yang akurat diharapkan dapat meningkatkan kualitas pengambilan keputusan dalam aplikasi medis, seperti rehabilitasi pasien dan pengembangan prostetik cerdas, serta dalam bidang teknologi, seperti pengendalian perangkat berbasis gestur. Dengan demikian, model yang dikembangkan tidak hanya berfungsi sebagai solusi teknis, tetapi juga memberikan nilai tambah secara fungsional dan aplikatif.</p>
+</section>
+<section id="kriteria-kesuksesan-bisnis">
+<h2><strong>4. Kriteria Kesuksesan Bisnis</strong><a class="headerlink" href="#kriteria-kesuksesan-bisnis" title="Permalink to this heading">#</a></h2>
+<p>Keberhasilan proyek ini diukur berdasarkan kemampuan model dalam melakukan klasifikasi gerakan tangan secara akurat dan dapat diimplementasikan dalam bentuk aplikasi. Secara kuantitatif, model dianggap berhasil apabila mampu mencapai tingkat akurasi lebih dari 70% pada data pengujian, yang menunjukkan bahwa sistem dapat mengenali pola gerakan tangan dengan tingkat keandalan yang baik.Selain performa model, aspek implementasi juga menjadi bagian dari kriteria kesuksesan bisnis.</p>
+</section>
+<section id="pernyataan-masalah-data-science">
+<h2><strong>5. Pernyataan Masalah Data Science</strong><a class="headerlink" href="#pernyataan-masalah-data-science" title="Permalink to this heading">#</a></h2>
+<p>Permasalahan bisnis yang telah diidentifikasi diterjemahkan ke dalam bentuk permasalahan data science sebagai tugas klasifikasi time series. Secara spesifik, permasalahan data science dalam proyek ini adalah membangun model yang mampu memprediksi enam kelas gerakan tangan berdasarkan sinyal sEMG satu dimensi dengan panjang 1500 titik waktu.</p>
+<p>Setiap sampel data direpresentasikan sebagai deret waktu yang menggambarkan aktivitas listrik otot selama suatu gerakan dilakukan. Tantangan utama dari permasalahan ini terletak pada kompleksitas pola sinyal serta kebutuhan model untuk mengenali perbedaan karakteristik antar kelas gerakan secara akurat.</p>
+</section>
+<section id="tujuan-data-science">
+<h2><strong>6. Tujuan Data Science</strong><a class="headerlink" href="#tujuan-data-science" title="Permalink to this heading">#</a></h2>
+<p>Tujuan data science dari proyek ini adalah menghasilkan model klasifikasi time series dengan tingkat akurasi yang tinggi dan performa yang stabil. Untuk mencapai tujuan tersebut, digunakan beberapa pendekatan algoritmik, mulai dari metode baseline hingga metode yang lebih canggih.</p>
+<p>Model yang digunakan meliputi algoritma 1-Nearest Neighbor dengan jarak Euclidean sebagai baseline, serta metode yang lebih advanced seperti Dynamic Time Warping (DTW) dan Convolutional Neural Network (CNN). Perbandingan performa antar model dilakukan untuk menentukan pendekatan terbaik dalam mengklasifikasikan sinyal sEMG.</p>
+</section>
+<section id="kriteria-evaluasi-teknis">
+<h2><strong>7. Kriteria Evaluasi Teknis</strong><a class="headerlink" href="#kriteria-evaluasi-teknis" title="Permalink to this heading">#</a></h2>
+<p>Evaluasi teknis model dilakukan menggunakan beberapa metrik performa yang umum digunakan dalam klasifikasi, yaitu accuracy, precision, recall, dan F1-score. Metrik-metrik ini digunakan untuk memberikan gambaran yang komprehensif mengenai kemampuan model dalam mengenali masing-masing kelas gerakan tangan.</p>
+<p>Selain itu, performa model baseline (KNN dengan jarak Euclidean) dibandingkan dengan model advanced (DTW atau CNN) untuk mengevaluasi peningkatan kinerja yang diperoleh. Model terbaik dipilih berdasarkan kemampuannya melampaui benchmark yang tersedia pada UCR Time Series Classification Archive, khususnya dari sisi akurasi dan stabilitas prediksi.</p>
+</section>
+<section id="asumsi-dan-batasan">
+<h2><strong>8. Asumsi dan Batasan</strong><a class="headerlink" href="#asumsi-dan-batasan" title="Permalink to this heading">#</a></h2>
+<p>Dalam proyek ini, beberapa asumsi dibuat untuk menyederhanakan proses analisis. Diasumsikan bahwa dataset yang digunakan telah melalui proses normalisasi, bersifat univariat, dan tidak mengandung missing values. Asumsi ini memungkinkan fokus analisis diarahkan pada pemodelan dan evaluasi, tanpa perlu melakukan penanganan data yang kompleks.</p>
+<p>Batasan utama dari proyek ini adalah ukuran dataset yang tergolong sedang serta ruang lingkup analisis yang difokuskan pada model baseline dan model deep learning sederhana. Proyek ini tidak mencakup eksplorasi model yang sangat kompleks atau teknik augmentasi data tingkat lanjut, sehingga hasil yang diperoleh disesuaikan dengan keterbatasan waktu dan sumber daya.</p>
+</section>
+<section id="risiko-dan-mitigasi">
+<h2><strong>9. Risiko dan Mitigasi</strong><a class="headerlink" href="#risiko-dan-mitigasi" title="Permalink to this heading">#</a></h2>
+<p>Salah satu risiko utama dalam pengembangan model klasifikasi adalah terjadinya overfitting, terutama ketika menggunakan model yang memiliki kompleksitas tinggi seperti CNN. Overfitting dapat menyebabkan model memiliki performa yang baik pada data latih tetapi buruk pada data uji.</p>
+<p>Untuk memitigasi risiko tersebut, dilakukan beberapa langkah, seperti penggunaan validation set, evaluasi performa pada data uji, serta penerapan teknik regularisasi. Selain itu, karena distribusi kelas dalam dataset relatif seimbang, tidak digunakan teknik oversampling agar model tetap belajar dari distribusi data asli. Pendekatan ini diharapkan dapat menghasilkan model yang lebih stabil dan mampu melakukan generalisasi dengan baik.</p>
+</section>
+<section id="sumber-dan-asal-usul-dataset">
+<h2><strong>10. Sumber dan Asal Usul Dataset</strong><a class="headerlink" href="#sumber-dan-asal-usul-dataset" title="Permalink to this heading">#</a></h2>
+<p>Dataset yang digunakan dalam proyek ini adalah <strong>SemgHandMovementCh2</strong>, yang merupakan bagian dari <em>Time Series Classification Archive</em> (UCR/UEA). Arsip ini merupakan salah satu repositori dataset <em>time series</em> yang paling banyak digunakan dalam penelitian akademik dan pengembangan metode klasifikasi deret waktu. Dataset dapat diakses secara publik melalui situs resmi berikut:</p>
+<p><strong><a class="reference external" href="https://www.timeseriesclassification.com/dataset.php">https://www.timeseriesclassification.com/dataset.php</a></strong></p>
+<p>Melalui situs tersebut, dataset <strong>SemgHandMovementCh2</strong> dapat diunduh dalam format standar UCR/UEA, yang terdiri dari file data latih (<em>training set</em>) dan data uji (<em>testing set</em>). Format ini memudahkan proses pemodelan karena setiap baris data merepresentasikan satu sampel <em>time series</em>, dengan label kelas pada kolom pertama diikuti oleh nilai sinyal pada kolom-kolom berikutnya.</p>
+<p>Secara lebih spesifik, dataset ini bersumber dari <strong>UCI Machine Learning Repository</strong> dengan nama <em>sEMG for Basic Hand Movements</em>. Data awal dikumpulkan oleh <strong>Sapsanis, Christos, et al.</strong>, menggunakan sistem EMG dua kanal dari Delsys untuk merekam aktivitas otot tangan. Proses pengambilan data melibatkan lima subjek sehat yang melakukan enam jenis gerakan dasar tangan. Sinyal sEMG yang direkam kemudian diproses menjadi representasi <em>power spectrum</em> untuk menghasilkan dataset yang siap digunakan dalam penelitian klasifikasi.</p>
+<p>Dataset tersebut kemudian dikurasi dan disesuaikan ke dalam format <em>time series classification</em> oleh <strong>Chin-Chia Michael Yeh</strong>, sehingga dapat digunakan secara luas dalam penelitian dan pembelajaran di bidang sains data dan machine learning. Versi <strong>SemgHandMovementCh2</strong> secara khusus menggunakan data dari <strong>channel kedua</strong>, dengan kelas yang merepresentasikan jenis gerakan tangan.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="b-data-understanding">
+<h1><strong>B. DATA UNDERSTANDING</strong><a class="headerlink" href="#b-data-understanding" title="Permalink to this heading">#</a></h1>
+<section id="deskripsi-akuisisi-data">
+<h2><strong>1. Deskripsi Akuisisi Data</strong><a class="headerlink" href="#deskripsi-akuisisi-data" title="Permalink to this heading">#</a></h2>
+<p>Dataset <strong>SemgHandMovementCh2</strong> berasal dari penelitian di bidang <em>surface electromyography</em> (sEMG) yang berfokus pada pengenalan gerakan tangan dasar. Dataset ini dikembangkan untuk merekam dan merepresentasikan aktivitas listrik otot rangka yang terjadi pada tangan saat seseorang melakukan berbagai jenis gerakan. Sinyal sEMG dipilih karena mampu menangkap informasi fisiologis secara langsung dari aktivitas otot, sehingga sangat relevan untuk analisis gerakan dan aplikasi biomedis.</p>
+<p>Proses pengambilan data dilakukan dengan melibatkan subjek sehat yang diminta untuk melakukan enam jenis gerakan tangan dasar secara berulang. Selama proses tersebut, sinyal listrik otot direkam menggunakan <strong>sistem EMG dua kanal (2-channel) dari Delsys</strong>, yang dikenal memiliki sensitivitas dan akurasi tinggi dalam pengukuran sinyal otot permukaan. Sistem ini memungkinkan perekaman aktivitas otot secara non-invasif, sehingga aman dan nyaman bagi subjek penelitian.</p>
+<p>Sinyal sEMG mentah yang diperoleh dari proses perekaman tidak langsung digunakan, melainkan melalui tahap pengolahan awal. Pada tahap ini, sinyal mentah diproses dengan mengekstraksi <strong>spektrum daya (power spectrum)</strong> untuk menghasilkan representasi sinyal yang lebih stabil dan informatif. Hasil ekstraksi tersebut kemudian disusun dalam bentuk <em>time series</em> dengan panjang tertentu, sehingga setiap sampel data merepresentasikan pola aktivitas otot selama satu jenis gerakan tangan.</p>
+<p>Dataset ini terdiri dari enam kelas yang masing-masing merepresentasikan jenis gerakan tangan, yaitu: <strong>Cylindrical (1)</strong>, <strong>Hook (2)</strong>, <strong>Tip (3)</strong>, <strong>Palmar (4)</strong>, <strong>Spherical (5)</strong>, dan <strong>Lateral (6)</strong>. Setiap kelas memiliki karakteristik pola sinyal yang berbeda, mencerminkan variasi aktivitas otot yang terjadi pada masing-masing jenis gerakan. Perbedaan pola inilah yang menjadi dasar dalam proses klasifikasi gerakan tangan menggunakan metode <em>time series classification</em>.</p>
+<p>Dataset <strong>SemgHandMovementCh2</strong> tersedia secara publik melalui <strong>UCI Machine Learning Repository</strong>, sehingga dapat digunakan secara luas untuk keperluan penelitian dan pembelajaran. Keberadaan dataset ini dalam repositori resmi memastikan bahwa data telah melalui proses kurasi dan dokumentasi yang baik, serta memenuhi standar penggunaan data ilmiah. Dengan karakteristik tersebut, dataset ini sangat sesuai untuk tahap <em>Data Understanding</em> dalam metodologi CRISP-DM dan menjadi fondasi yang kuat untuk pengembangan model klasifikasi pada tahap selanjutnya.</p>
+</section>
+<section id="kode-untuk-load-dan-inspeksi-data">
+<h2><strong>2. Kode untuk Load dan Inspeksi Data</strong><a class="headerlink" href="#kode-untuk-load-dan-inspeksi-data" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># Load dataset (format UCR: kolom 0 = label, kolom 1-1500 = time series)</span>
+<span class="n">train_path</span> <span class="o">=</span> <span class="s2">&quot;SemgHandMovementCh2_TRAIN.txt&quot;</span>
+<span class="n">test_path</span> <span class="o">=</span> <span class="s2">&quot;SemgHandMovementCh2_TEST.txt&quot;</span>
+
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">test_path</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bentuk Data Training (Baris, Kolom):&quot;</span><span class="p">,</span> <span class="n">df_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (450, 1501)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bentuk Data Testing (Baris, Kolom):&quot;</span><span class="p">,</span> <span class="n">df_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>    <span class="c1"># (450, 1501)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Contoh 5 baris pertama data training:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_train</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Pisah label dan fitur</span>
+<span class="n">df_train</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df_test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>   <span class="c1"># Kolom 1-1500: time series</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">df_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>    <span class="c1"># Kolom 0: label (1-6)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">df_test</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah fitur (panjang time series):&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># 1500</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unique labels train:&quot;</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>       <span class="c1"># [1,2,3,4,5,6]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unique labels test:&quot;</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+
+<span class="c1"># Cek missing values</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Missing values TRAIN:&quot;</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>  <span class="c1"># 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Missing values TEST:&quot;</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>    <span class="c1"># 0</span>
+
+<span class="c1"># Distribusi kelas</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Distribusi Kelas pada Training Set:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Distribusi Kelas pada Test Set:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipython-input-2734690805.py:10: FutureWarning: The &#39;delim_whitespace&#39; keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep=&#39;\s+&#39;`` instead
+  df_train = pd.read_csv(train_path, delim_whitespace=True, header=None)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipython-input-2734690805.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">test_path</span> <span class="o">=</span> <span class="s2">&quot;SemgHandMovementCh2_TEST.txt&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> 
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">train_path</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">test_path</span><span class="p">,</span> <span class="n">delim_whitespace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> 
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span>     <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1025</span> 
+<span class="ne">-&gt; </span><span class="mi">1026</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1027</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1028</span> 
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">618</span> 
+<span class="g g-Whitespace">    </span><span class="mi">619</span>     <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">621</span> 
+<span class="g g-Whitespace">    </span><span class="mi">622</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1618</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1619</span>         <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1621</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1622</span>     <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>                 <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>                     <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span>             <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>                 <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>                 <span class="n">mode</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/pandas/io/common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span>         <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>             <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">873</span>             <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span>                 <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>                 <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;SemgHandMovementCh2_TRAIN.txt&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualisasi">
+<h2><strong>3. Visualisasi</strong><a class="headerlink" href="#visualisasi" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Visualisasi Distribusi Label:</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Visualisasi Distribusi Label:&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribusi Label (TRAIN)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Label&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribusi Label (TEST)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Label&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;------------------------------------------------------------------------------------------------------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+
+
+
+
+<span class="c1"># Visualisasi Contoh Time Series:</span>
+<span class="n">unique_classes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">unique_classes</span><span class="p">):</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">c</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Contoh Timeseries Kelas </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="p">[</span><span class="s2">&quot;Cylindrical&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Hook&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Tip&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Palmar&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Spherical&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Lateral&quot;</span><span class="p">][</span><span class="n">c</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Timepoints&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Nilai&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Visualisasi Contoh Time Series:&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;------------------------------------------------------------------------------------------------------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+
+
+
+
+<span class="c1"># Visualisasi Rata-rata Time Series per Kelas:</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Visualisasi Rata-rata Time Series per Kelas:&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">unique_classes</span><span class="p">:</span>
+    <span class="n">mean_series</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[</span><span class="n">y_train</span> <span class="o">==</span> <span class="n">label</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mean_series</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Mean class </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Rata-rata Time Series per Kelas (TRAIN)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time index&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Visualisasi Distribusi Label:
+</pre></div>
+</div>
+<img alt="_images/3f38b5b0eef651fcac59ecd34ab76f17c8aa908e9f13b3d73b48eec67de1e13d.png" src="_images/3f38b5b0eef651fcac59ecd34ab76f17c8aa908e9f13b3d73b48eec67de1e13d.png" />
+<img alt="_images/c42e307b29b0ef063a4d435e593d2028387d69045d7ec12a8fcf460034db5591.png" src="_images/c42e307b29b0ef063a4d435e593d2028387d69045d7ec12a8fcf460034db5591.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Visualisasi Contoh Time Series:
+</pre></div>
+</div>
+<img alt="_images/44882aac85dca882987b9849327ef0d6302d6280bb90cd4e5a015dd6a5a31c24.png" src="_images/44882aac85dca882987b9849327ef0d6302d6280bb90cd4e5a015dd6a5a31c24.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Visualisasi Rata-rata Time Series per Kelas:
+</pre></div>
+</div>
+<img alt="_images/31a2b714a5d2b63017caf0f1b105914dd2ec76002c88fc7b75346f95fe9309c7.png" src="_images/31a2b714a5d2b63017caf0f1b105914dd2ec76002c88fc7b75346f95fe9309c7.png" />
+</div>
+</div>
+</section>
+<section id="insight-hasil-eksplorasi-data">
+<h2><strong>4. Insight Hasil Eksplorasi Data</strong><a class="headerlink" href="#insight-hasil-eksplorasi-data" title="Permalink to this heading">#</a></h2>
+<p>Berdasarkan hasil eksplorasi awal terhadap dataset <strong>SemgHandMovementCh2</strong>, diperoleh insight penting terkait distribusi kelas dan karakteristik sinyal yang terkandung di dalam data. Dataset ini memiliki distribusi kelas yang relatif <strong>seimbang</strong>, dengan jumlah sampel yang hampir sama pada setiap kelas gerakan tangan. Secara rata-rata, setiap kelas memiliki sekitar <strong>75 sampel</strong>, sehingga tidak terdapat dominasi kelas tertentu yang berpotensi menyebabkan bias pada proses pelatihan model. Kondisi ini sangat menguntungkan dalam konteks klasifikasi, karena model dapat belajar pola dari setiap kelas secara proporsional.</p>
+<p>Selain distribusi kelas, karakteristik utama dari dataset ini adalah panjang deret waktu yang cukup besar, yaitu <strong>1500 titik waktu untuk setiap sampel</strong>. Panjang <em>time series</em> ini memungkinkan model untuk menangkap dinamika aktivitas otot secara lebih detail, termasuk variasi amplitudo dan perubahan pola sinyal sepanjang durasi gerakan. Namun, panjang deret waktu yang besar juga menambah kompleksitas data, sehingga membutuhkan metode pemodelan yang mampu mengekstraksi fitur secara efektif dari data berdimensi tinggi.</p>
+<p>Hasil visualisasi sinyal sEMG menunjukkan bahwa setiap jenis gerakan tangan memiliki <strong>pola sinyal yang berbeda</strong>. Perbedaan ini dapat diamati dari variasi amplitudo, tingkat fluktuasi, serta struktur temporal sinyal. Sebagai contoh, gerakan <em>Hook</em> cenderung menunjukkan amplitudo sinyal yang lebih tinggi dibandingkan beberapa gerakan lainnya, yang mengindikasikan aktivitas otot yang lebih intens. Sementara itu, gerakan seperti <em>Tip</em> atau <em>Lateral</em> memperlihatkan pola sinyal yang lebih halus dengan fluktuasi yang relatif berbeda.</p>
+<p>Insight ini mengindikasikan bahwa sinyal sEMG mengandung informasi yang cukup kuat untuk membedakan antar kelas gerakan tangan. Perbedaan pola sinyal antar kelas menjadi dasar yang penting bagi penerapan metode klasifikasi <em>time series</em>, khususnya model yang mampu menangkap pola lokal dan global, seperti <em>Convolutional Neural Network</em> (CNN). Dengan karakteristik data yang seimbang dan pola sinyal yang jelas, dataset ini dinilai sangat cocok untuk digunakan dalam pengembangan dan evaluasi model klasifikasi gerakan tangan pada tahap selanjutnya.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="c-data-preprocessing">
+<h1><strong>C. DATA PREPROCESSING</strong><a class="headerlink" href="#c-data-preprocessing" title="Permalink to this heading">#</a></h1>
+<p>Tahap <em>data preprocessing</em> merupakan langkah penting dalam proses analisis data karena bertujuan untuk menyiapkan data agar dapat diproses secara optimal oleh algoritma machine learning. Pada dataset <strong>SemgHandMovementCh2</strong>, preprocessing difokuskan pada penyesuaian format data dan label agar sesuai dengan kebutuhan model klasifikasi <em>time series</em>, tanpa mengubah karakteristik utama sinyal sEMG.</p>
+<p>Langkah pertama yang dilakukan pada tahap ini adalah <strong>encoding label kelas</strong>. Label asli pada dataset berada dalam rentang nilai <strong>1 hingga 6</strong>, yang masing-masing merepresentasikan enam jenis gerakan tangan. Namun, sebagian besar algoritma machine learning dan deep learning membutuhkan label dalam bentuk indeks numerik yang dimulai dari nol. Oleh karena itu, digunakan teknik <strong>Label Encoding</strong> untuk mengonversi label dari rentang 1–6 menjadi 0–5. Proses ini memastikan bahwa setiap kelas direpresentasikan secara konsisten dan dapat diproses oleh model tanpa menimbulkan kesalahan interpretasi.</p>
+<p>Selanjutnya, data fitur yang semula berada dalam struktur <em>DataFrame</em> dikonversi ke dalam bentuk <strong>array NumPy</strong>. Konversi ini dilakukan karena sebagian besar proses komputasi numerik dan pemodelan machine learning di Python lebih efisien dan kompatibel dengan format NumPy. Dengan mengubah data ke bentuk array, proses pelatihan dan evaluasi model dapat dilakukan dengan lebih cepat dan stabil.</p>
+<p>Pada tahap preprocessing ini, tidak dilakukan proses normalisasi tambahan karena dataset <strong>SemgHandMovementCh2</strong> telah disediakan dalam kondisi yang relatif terstandarisasi. Hal ini dapat diamati dari nilai rata-rata (<em>mean</em>) dan standar deviasi (<em>standard deviation</em>) sinyal yang berada pada rentang yang wajar. Informasi tersebut ditampilkan sebagai bagian dari pengecekan awal untuk memastikan bahwa data tidak memiliki skala yang ekstrem yang dapat memengaruhi kinerja model.</p>
+<p>Sebagai tahap akhir, dilakukan pengecekan bentuk data (<em>shape</em>) untuk memastikan bahwa struktur data sudah sesuai dengan kebutuhan pemodelan. Bentuk data yang ditampilkan menunjukkan jumlah sampel dan panjang deret waktu, sehingga dapat dipastikan bahwa setiap sampel direpresentasikan sebagai <em>time series</em> dengan panjang yang konsisten. Dengan selesainya tahap preprocessing ini, data dinyatakan siap untuk digunakan pada tahap pemodelan dan evaluasi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
+
+<span class="c1"># Label Encoding (1-6 -&gt; 0-5)</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">y_train_enc</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_test_enc</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+
+<span class="c1"># Konversi ke numpy</span>
+<span class="n">X_train_np</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">values</span>
+<span class="n">X_test_np</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Status Preprocessing:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1. Normalisasi: SUDAH BAWAAN (Mean=</span><span class="si">{</span><span class="n">X_train_np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Std=</span><span class="si">{</span><span class="n">X_train_np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2. Label Encoding: SUDAH DILAKUKAN. Label asli </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span><span class="si">}</span><span class="s2"> diubah menjadi </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train_enc</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;3. Bentuk Data (Shape): </span><span class="si">{</span><span class="n">X_train_np</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Status Preprocessing:
+1. Normalisasi: SUDAH BAWAAN (Mean=9.97, Std=6.04)
+2. Label Encoding: SUDAH DILAKUKAN. Label asli [1 2 3 4 5 6] diubah menjadi [0 1 2 3 4 5].
+3. Bentuk Data (Shape): (450, 1500)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Pertimbangan Keseimbangan Dataset dan Penggunaan SMOTE</strong></p>
+<p>Berdasarkan hasil eksplorasi dan analisis distribusi kelas pada dataset <strong>SemgHandMovementCh2</strong>, dapat disimpulkan bahwa dataset ini memiliki distribusi kelas yang relatif <strong>seimbang</strong>. Setiap kelas gerakan tangan memiliki jumlah sampel yang hampir sama, sehingga tidak terdapat kelas mayoritas atau minoritas yang mendominasi data. Kondisi ini sangat penting dalam konteks klasifikasi, karena ketidakseimbangan kelas dapat menyebabkan model cenderung memprediksi kelas tertentu dan mengabaikan kelas lainnya.</p>
+<p>Teknik <em>Synthetic Minority Over-sampling Technique</em> (SMOTE) umumnya digunakan untuk mengatasi permasalahan ketidakseimbangan data dengan cara menambah sampel sintetis pada kelas minoritas. Namun, pada dataset ini, penerapan SMOTE tidak diperlukan karena tidak ada kelas yang secara signifikan kekurangan jumlah data. Penggunaan SMOTE pada dataset yang sudah seimbang justru berpotensi mengubah distribusi data asli dan memperkenalkan pola sintetis yang tidak sepenuhnya merepresentasikan karakteristik sinyal sEMG yang sesungguhnya.</p>
+<p>Selain itu, dataset <strong>SemgHandMovementCh2</strong> merupakan dataset <em>time series</em> biomedis, di mana struktur temporal dan kontinuitas sinyal memiliki peran penting. Penerapan SMOTE pada data <em>time series</em> dapat berisiko merusak pola temporal asli karena teknik ini pada dasarnya bekerja pada ruang fitur statis, bukan pada deret waktu. Oleh karena itu, mempertahankan data asli tanpa proses oversampling menjadi pilihan yang lebih tepat untuk menjaga keaslian pola sinyal.</p>
+<p>Dengan mempertimbangkan keseimbangan distribusi kelas serta karakteristik data <em>time series</em> yang digunakan, keputusan untuk tidak menerapkan SMOTE dinilai tepat dan selaras dengan prinsip analisis data yang baik. Pendekatan ini membantu memastikan bahwa model belajar dari data asli yang representatif dan mampu melakukan generalisasi dengan lebih baik pada data uji.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="d-modeling-dan-evaluasi">
+<h1><strong>D. MODELING DAN EVALUASI</strong><a class="headerlink" href="#d-modeling-dan-evaluasi" title="Permalink to this heading">#</a></h1>
+<section id="model-1-nearest-neighbor-1-nn-dengan-jarak-euclidean">
+<h2><strong>1. Model 1-Nearest Neighbor (1-NN) dengan Jarak Euclidean</strong><a class="headerlink" href="#model-1-nearest-neighbor-1-nn-dengan-jarak-euclidean" title="Permalink to this heading">#</a></h2>
+<p>Pada tahap pemodelan, algoritma K-Nearest Neighbor (KNN) digunakan sebagai model baseline untuk melakukan klasifikasi gerakan tangan berdasarkan sinyal sEMG. Konfigurasi yang dipilih adalah 1-Nearest Neighbor (1-NN) dengan metrik jarak Euclidean, di mana setiap data uji akan diklasifikasikan berdasarkan satu tetangga terdekatnya pada data latih. Pemilihan nilai k = 1 bertujuan untuk menangkap kemiripan paling langsung antar sinyal tanpa proses perataan dari banyak tetangga, sehingga model dapat merefleksikan sensitivitas tinggi terhadap pola sinyal individual.</p>
+<p>Secara teknis, model dilatih menggunakan data fitur time series hasil preprocessing (X_train_np) dan label yang telah diencoding (y_train_enc). Setiap sampel direpresentasikan sebagai vektor berdimensi 1500 titik waktu, dan jarak Euclidean digunakan untuk menghitung kemiripan antar sinyal. Pendekatan ini mengasumsikan bahwa perbedaan nilai absolut pada setiap titik waktu memiliki kontribusi yang sama terhadap penentuan kelas, tanpa mempertimbangkan pergeseran temporal atau deformasi waktu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+
+<span class="c1"># 1-NN Euclidean</span>
+<span class="n">model_euclid</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+<span class="n">model_euclid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_np</span><span class="p">,</span> <span class="n">y_train_enc</span><span class="p">)</span>
+<span class="n">pred_euclid</span> <span class="o">=</span> <span class="n">model_euclid</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_np</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy (1-NN Euclidean):&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_enc</span><span class="p">,</span> <span class="n">pred_euclid</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_enc</span><span class="p">,</span> <span class="n">pred_euclid</span><span class="p">))</span>
+
+<span class="c1"># Confusion Matrix</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_enc</span><span class="p">,</span> <span class="n">pred_euclid</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix - 1-NN Euclidean&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy (1-NN Euclidean): 0.5977777777777777
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       0.48      0.63      0.54        75
+           1       0.65      0.52      0.58        75
+           2       0.60      0.61      0.61        75
+           3       0.43      0.49      0.46        75
+           4       0.94      0.59      0.72        75
+           5       0.68      0.75      0.71        75
+
+    accuracy                           0.60       450
+   macro avg       0.63      0.60      0.60       450
+weighted avg       0.63      0.60      0.60       450
+</pre></div>
+</div>
+<img alt="_images/087e2810c0ca7045e0c031cc5cab2b567d46b0be30df4d9c60ee3ff3e2d30ef9.png" src="_images/087e2810c0ca7045e0c031cc5cab2b567d46b0be30df4d9c60ee3ff3e2d30ef9.png" />
+</div>
+</div>
+<p><strong>1.1 Hasil Evaluasi Model 1-NN Euclidean</strong></p>
+<ul class="simple">
+<li><p>Berdasarkan hasil pengujian pada data uji, model 1-NN Euclidean menghasilkan akurasi sebesar 59,78%. Nilai ini menunjukkan bahwa model mampu mengklasifikasikan sekitar enam dari sepuluh sampel gerakan tangan dengan benar. Sebagai model baseline, performa ini memberikan gambaran awal mengenai tingkat kesulitan masalah klasifikasi gerakan tangan menggunakan sinyal sEMG mentah berbasis jarak statis.</p></li>
+<li><p>Laporan klasifikasi (classification report) menunjukkan variasi performa antar kelas. Beberapa kelas seperti kelas 4 (Spherical) dan kelas 5 (Lateral) memiliki nilai precision dan F1-score yang relatif tinggi, yang mengindikasikan bahwa pola sinyal pada kelas-kelas tersebut cukup konsisten dan mudah dikenali menggunakan jarak Euclidean. Sebaliknya, kelas seperti kelas 3 (Palmar) menunjukkan performa yang lebih rendah, baik dari sisi precision maupun recall, yang mengindikasikan adanya kemiripan pola sinyal dengan kelas lain atau variasi intra-kelas yang cukup tinggi.</p></li>
+</ul>
+<p><strong>1.2 Analisis Confusion Matrix</strong></p>
+<ul class="simple">
+<li><p>Visualisasi confusion matrix memberikan wawasan lebih mendalam terkait kesalahan prediksi yang dilakukan model. Terlihat bahwa kesalahan klasifikasi sering terjadi antar kelas yang memiliki karakteristik sinyal sEMG yang mirip secara amplitudo dan bentuk gelombang. Hal ini mengindikasikan bahwa metrik Euclidean kurang mampu menangkap perbedaan pola temporal yang bersifat non-linear atau pergeseran fase waktu antar sinyal.</p></li>
+<li><p>Meskipun dataset berada dalam kondisi seimbang, keterbatasan pendekatan Euclidean menjadi faktor utama yang membatasi performa model. Jarak Euclidean memperlakukan setiap titik waktu secara independen dan sejajar, sehingga kurang fleksibel dalam menghadapi variasi kecepatan kontraksi otot atau pergeseran waktu antar gerakan tangan yang berbeda.</p></li>
+</ul>
+<p><strong>1.3 Kesimpulan Sementara Model Baseline</strong></p>
+<ul class="simple">
+<li><p>Secara keseluruhan, model 1-NN Euclidean berhasil berfungsi sebagai baseline classifier yang memberikan titik acuan awal dalam evaluasi performa. Namun, dengan akurasi di bawah 70%, model ini belum memenuhi kriteria kesuksesan teknis yang telah ditetapkan. Hasil ini menguatkan hipotesis bahwa pendekatan jarak statis kurang optimal untuk data time series sEMG yang memiliki dinamika temporal kompleks.</p></li>
+<li><p>Oleh karena itu, diperlukan pendekatan lanjutan yang lebih adaptif terhadap struktur waktu, seperti 1-NN dengan Dynamic Time Warping (DTW) atau model berbasis deep learning (CNN), yang diharapkan mampu meningkatkan akurasi dan stabilitas klasifikasi pada tahap pemodelan berikutnya.</p></li>
+</ul>
+</section>
+<section id="model-1-nearest-neighbor-1-nn-dengan-dynamic-time-warping-dtw">
+<h2><strong>2. Model 1-Nearest Neighbor (1-NN) dengan Dynamic Time Warping (DTW)</strong><a class="headerlink" href="#model-1-nearest-neighbor-1-nn-dengan-dynamic-time-warping-dtw" title="Permalink to this heading">#</a></h2>
+<p>Sebagai pengembangan dari model baseline berbasis jarak Euclidean, penelitian ini mengimplementasikan 1-Nearest Neighbor (1-NN) dengan metrik Dynamic Time Warping (DTW). DTW merupakan metode pengukuran jarak yang dirancang khusus untuk data time series, karena mampu menyelaraskan dua sinyal dengan memperbolehkan peregangan dan pergeseran waktu. Pendekatan ini sangat relevan untuk sinyal sEMG, di mana pola gerakan otot dapat terjadi dengan kecepatan yang berbeda meskipun merepresentasikan gerakan yang sama.</p>
+<p>Model ini diimplementasikan menggunakan pustaka tslearn, yang mendukung klasifikasi time series secara langsung tanpa harus mereduksi data menjadi fitur statis. Dengan menggunakan k = 1, setiap sampel data uji diklasifikasikan berdasarkan satu sampel data latih yang memiliki jarak DTW paling kecil, sehingga kemiripan pola temporal menjadi faktor utama dalam penentuan kelas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tslearn
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tslearn in /usr/local/lib/python3.12/dist-packages (0.7.0)
+Requirement already satisfied: scikit-learn&gt;=1.4 in /usr/local/lib/python3.12/dist-packages (from tslearn) (1.6.1)
+Requirement already satisfied: numpy&gt;=1.24.3 in /usr/local/lib/python3.12/dist-packages (from tslearn) (2.0.2)
+Requirement already satisfied: scipy&gt;=1.10.1 in /usr/local/lib/python3.12/dist-packages (from tslearn) (1.16.3)
+Requirement already satisfied: numba&gt;=0.58.1 in /usr/local/lib/python3.12/dist-packages (from tslearn) (0.60.0)
+Requirement already satisfied: joblib&gt;=1.2 in /usr/local/lib/python3.12/dist-packages (from tslearn) (1.5.2)
+Requirement already satisfied: llvmlite&lt;0.44,&gt;=0.43.0dev0 in /usr/local/lib/python3.12/dist-packages (from numba&gt;=0.58.1-&gt;tslearn) (0.43.0)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /usr/local/lib/python3.12/dist-packages (from scikit-learn&gt;=1.4-&gt;tslearn) (3.6.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tslearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsTimeSeriesClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 1. RESHAPE + DOWNSAMPLING</span>
+<span class="c1"># ===============================</span>
+<span class="c1"># dari 1500 → 300 timestep</span>
+<span class="n">X_train_ts</span> <span class="o">=</span> <span class="n">X_train_np</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">450</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1</span><span class="p">))[:,</span> <span class="p">::</span><span class="mi">5</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">X_test_ts</span>  <span class="o">=</span> <span class="n">X_test_np</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">450</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1</span><span class="p">))[:,</span> <span class="p">::</span><span class="mi">5</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 2. SUBSET DATA (AGAR CEPAT)</span>
+<span class="c1"># ===============================</span>
+<span class="n">X_train_ts_small</span> <span class="o">=</span> <span class="n">X_train_ts</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
+<span class="n">y_train_small</span> <span class="o">=</span> <span class="n">y_train_enc</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
+
+<span class="n">X_test_ts_small</span> <span class="o">=</span> <span class="n">X_test_ts</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span>
+<span class="n">y_test_small</span> <span class="o">=</span> <span class="n">y_test_enc</span><span class="p">[:</span><span class="mi">50</span><span class="p">]</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 3. 1-NN DTW (OPTIMIZED)</span>
+<span class="c1"># ===============================</span>
+<span class="n">model_dtw</span> <span class="o">=</span> <span class="n">KNeighborsTimeSeriesClassifier</span><span class="p">(</span>
+    <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;dtw&quot;</span><span class="p">,</span>
+    <span class="n">metric_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sakoe_chiba_radius&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">model_dtw</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_ts_small</span><span class="p">,</span> <span class="n">y_train_small</span><span class="p">)</span>
+<span class="n">pred_dtw</span> <span class="o">=</span> <span class="n">model_dtw</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_ts_small</span><span class="p">)</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 4. EVALUASI</span>
+<span class="c1"># ===============================</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy (1-NN DTW):&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_small</span><span class="p">,</span> <span class="n">pred_dtw</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_small</span><span class="p">,</span> <span class="n">pred_dtw</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_small</span><span class="p">,</span> <span class="n">pred_dtw</span><span class="p">),</span>
+            <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix - 1-NN DTW&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy (1-NN DTW): 0.9
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       1.00      0.90      0.95        50
+           1       0.00      0.00      0.00         0
+
+    accuracy                           0.90        50
+   macro avg       0.50      0.45      0.47        50
+weighted avg       1.00      0.90      0.95        50
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
+/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
+/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
+</pre></div>
+</div>
+<img alt="_images/e91b3a5fc89f1e6c65639ce1fef4598df5f280978cc22aa71cea86f689d46a03.png" src="_images/e91b3a5fc89f1e6c65639ce1fef4598df5f280978cc22aa71cea86f689d46a03.png" />
+</div>
+</div>
+<p><strong>2.1 Optimasi Data: Reshape, Downsampling, dan Subset</strong></p>
+<ul class="simple">
+<li><p>Karena kompleksitas komputasi DTW yang tinggi, terutama untuk sinyal panjang (1500 timestep), dilakukan downsampling dengan mengambil setiap titik ke-5 dari sinyal, sehingga panjang sinyal berkurang dari 1500 menjadi 300 timestep. Langkah ini bertujuan untuk menekan waktu komputasi tanpa menghilangkan pola utama sinyal secara signifikan.</p></li>
+<li><p>Selain itu, untuk keperluan eksperimen dan keterbatasan sumber daya komputasi, hanya digunakan subset data yang terdiri dari 100 sampel data latih dan 50 sampel data uji. Pendekatan ini bersifat eksploratif dan bertujuan untuk mengevaluasi potensi DTW dalam mengenali pola temporal sinyal sEMG, bukan untuk menghasilkan performa akhir yang sepenuhnya representatif terhadap keseluruhan dataset.</p></li>
+<li><p>Untuk meningkatkan efisiensi lebih lanjut, DTW dikonfigurasi dengan Sakoe-Chiba band (sakoe_chiba_radius = 10), yang membatasi ruang pencarian penyelarasan waktu sehingga mengurangi kompleksitas komputasi sekaligus membantu menghindari pencocokan yang tidak realistis.</p></li>
+</ul>
+<p><strong>2.2 Hasil Evaluasi Model 1-NN DTW</strong></p>
+<ul class="simple">
+<li><p>Berdasarkan hasil pengujian pada subset data uji, model 1-NN DTW menghasilkan akurasi sebesar 90%, yang secara numerik jauh lebih tinggi dibandingkan model-model sebelumnya. Hal ini menunjukkan bahwa DTW sangat efektif dalam mengukur kemiripan sinyal sEMG berbasis pola temporal, terutama ketika pergeseran waktu antar sinyal diperbolehkan.</p></li>
+<li><p>Namun, hasil classification report menunjukkan adanya ketidakseimbangan distribusi kelas pada subset data uji, di mana hanya satu kelas yang muncul dalam data uji tersebut. Kondisi ini menyebabkan beberapa metrik evaluasi, seperti precision dan recall pada kelas tertentu, menjadi tidak terdefinisi dan memunculkan peringatan dari pustaka sklearn. Oleh karena itu, meskipun nilai akurasi terlihat sangat tinggi, hasil ini tidak dapat langsung digeneralisasikan sebagai performa akhir model terhadap seluruh dataset.</p></li>
+</ul>
+<p><strong>2.3 nalisis Confusion Matrix dan Validitas Hasil</strong></p>
+<ul class="simple">
+<li><p>Confusion matrix menunjukkan bahwa mayoritas prediksi jatuh pada satu kelas dominan, yang menjelaskan mengapa nilai akurasi tampak sangat tinggi. Fenomena ini menegaskan bahwa akurasi pada subset kecil dan tidak seimbang dapat bersifat menyesatkan jika tidak dianalisis secara kritis. Oleh karena itu, hasil ini harus dipahami sebagai indikasi potensi metode DTW, bukan sebagai bukti kinerja final yang definitif.</p></li>
+<li><p>Dari sudut pandang metodologi data science, pendekatan ini tetap valid sebagai eksperimen eksploratif untuk menunjukkan bahwa metode berbasis keselarasan waktu memiliki keunggulan dibandingkan jarak Euclidean dalam menangani sinyal sEMG. Namun, untuk penggunaan operasional atau deployment, diperlukan evaluasi ulang menggunakan seluruh data uji dengan distribusi kelas yang seimbang.</p></li>
+</ul>
+<p><strong>2.4 Perbandingan dengan Model Lain</strong></p>
+<ul class="simple">
+<li><p>Jika dibandingkan dengan model 1-NN Euclidean, Random Forest, dan CNN, model DTW menunjukkan keunggulan konseptual dalam menangani karakteristik temporal sinyal sEMG. Berbeda dengan Random Forest yang bekerja pada fitur statis, dan CNN yang membutuhkan data besar serta optimasi kompleks, DTW secara langsung membandingkan bentuk sinyal sehingga lebih selaras dengan sifat alami data.</p></li>
+<li><p>Namun demikian, kompleksitas komputasi DTW menjadi keterbatasan utama, sehingga pada penelitian ini dilakukan kompromi berupa downsampling dan pembatasan jumlah data. Hal ini menjadi pertimbangan penting dalam pemilihan model untuk deployment, khususnya pada sistem berbasis web.</p></li>
+</ul>
+<p><strong>2.5 Kesimpulan Model 1-NN DTW</strong></p>
+<ul class="simple">
+<li><p>Secara keseluruhan, model 1-NN DTW menunjukkan potensi performa terbaik secara konseptual dalam klasifikasi gerakan tangan berbasis sinyal sEMG. Meskipun hasil akurasi mencapai 90% pada eksperimen subset, nilai tersebut tidak digunakan sebagai klaim performa akhir, melainkan sebagai bukti bahwa pendekatan berbasis time warping sangat efektif untuk data sinyal.</p></li>
+<li><p>Dalam konteks tugas UAS ini, DTW direkomendasikan sebagai model terbaik secara metodologis, dengan catatan bahwa evaluasi dilakukan pada subset data karena keterbatasan komputasi. Model ini dipilih sebagai kandidat utama untuk ditampilkan pada tahap demo, dengan penjelasan yang transparan mengenai batasan eksperimen.</p></li>
+<li><p>DTW merupakan metode pengukuran jarak yang memiliki kompleksitas komputasi tinggi, khususnya pada data time series dengan panjang sinyal yang besar seperti sinyal sEMG (1500 timestep). Untuk menjaga agar eksperimen tetap dapat dijalankan dalam waktu yang wajar dan sesuai dengan keterbatasan sumber daya komputasi, evaluasi dilakukan pada subset data sebagai proof of concept atau bukti konsep awal.</p></li>
+<li><p>Hasil akurasi sebesar 90% tersebut tidak dimaksudkan sebagai klaim performa akhir model, melainkan sebagai indikasi bahwa pendekatan berbasis keselarasan waktu (DTW) memiliki potensi yang sangat baik dalam mengenali pola temporal sinyal sEMG. Oleh karena itu, hasil ini digunakan untuk menunjukkan keunggulan metodologis DTW dibandingkan jarak Euclidean, bukan untuk menggantikan evaluasi penuh pada seluruh dataset.</p></li>
+</ul>
+</section>
+<section id="model-random-forest">
+<h2><strong>3. (Model Random Forest:)</strong><a class="headerlink" href="#model-random-forest" title="Permalink to this heading">#</a></h2>
+<p>Pemilihan dan Konfigurasi Model Random Forest.</p>
+<p>Selain model berbasis jarak, penelitian ini juga menguji Random Forest Classifier sebagai pendekatan ensemble learning untuk klasifikasi gerakan tangan berbasis sinyal sEMG. Random Forest dipilih karena kemampuannya menggabungkan banyak decision tree untuk meningkatkan stabilitas prediksi dan mengurangi risiko overfitting dibandingkan satu pohon keputusan tunggal. Model ini diharapkan mampu menangkap hubungan non-linear pada data sinyal sEMG yang kompleks.</p>
+<p>Pada implementasinya, model dikonfigurasi dengan 300 pohon keputusan (n_estimators=300), random state sebesar 42 untuk menjaga reprodusibilitas eksperimen, serta parameter class_weight=’balanced’ untuk memastikan bahwa setiap kelas diperlakukan secara adil selama proses pelatihan. Seluruh proses pelatihan dilakukan secara paralel menggunakan seluruh inti prosesor (n_jobs=-1) guna meningkatkan efisiensi komputasi. Model dilatih menggunakan data latih hasil preprocessing dalam bentuk vektor berdimensi 1500 fitur per sampel.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_np</span><span class="p">,</span> <span class="n">y_train_enc</span><span class="p">)</span>
+<span class="n">rf_pred</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_np</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy (Random Forest):&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_enc</span><span class="p">,</span> <span class="n">rf_pred</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_enc</span><span class="p">,</span> <span class="n">rf_pred</span><span class="p">))</span>
+
+<span class="c1"># Confusion Matrix</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_enc</span><span class="p">,</span> <span class="n">rf_pred</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix - Random Forest&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy (Random Forest): 0.4955555555555556
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       0.45      0.59      0.51        75
+           1       0.41      0.53      0.46        75
+           2       0.51      0.49      0.50        75
+           3       0.31      0.12      0.17        75
+           4       0.55      0.64      0.59        75
+           5       0.67      0.60      0.63        75
+
+    accuracy                           0.50       450
+   macro avg       0.48      0.50      0.48       450
+weighted avg       0.48      0.50      0.48       450
+</pre></div>
+</div>
+<img alt="_images/865fedca51e06c862a8f1f2c692ee787db3968962b024d27eee48a5fc28f1163.png" src="_images/865fedca51e06c862a8f1f2c692ee787db3968962b024d27eee48a5fc28f1163.png" />
+</div>
+</div>
+<p><strong>3.1 Hasil Evaluasi Kinerja Model</strong></p>
+<ul class="simple">
+<li><p>Berdasarkan hasil pengujian pada data uji, model Random Forest menghasilkan akurasi sebesar 49,56%, yang lebih rendah dibandingkan performa model baseline 1-NN Euclidean. Nilai akurasi ini menunjukkan bahwa kurang dari setengah data uji dapat diklasifikasikan dengan benar oleh model, sehingga secara keseluruhan Random Forest belum mampu memberikan performa yang memadai untuk tugas klasifikasi gerakan tangan berbasis sinyal sEMG pada konfigurasi ini.</p></li>
+<li><p>Laporan klasifikasi menunjukkan bahwa performa antar kelas bervariasi cukup signifikan. Beberapa kelas seperti kelas 5 (Lateral) dan kelas 4 (Spherical) memiliki nilai precision dan recall yang relatif lebih baik dibandingkan kelas lainnya. Namun, kelas Palmar (kelas 3) menunjukkan performa yang sangat rendah, khususnya pada nilai recall, yang mengindikasikan bahwa sebagian besar sampel kelas tersebut salah diklasifikasikan sebagai kelas lain. Hal ini menunjukkan adanya tumpang tindih fitur yang tinggi antar kelas pada representasi fitur mentah berbasis time series.</p></li>
+</ul>
+<p><strong>3.2 Analisis Confusion Matrix</strong></p>
+<ul class="simple">
+<li><p>Visualisasi confusion matrix memperlihatkan bahwa kesalahan klasifikasi tersebar di hampir seluruh kelas, terutama pada kelas-kelas dengan pola sinyal yang saling menyerupai. Random Forest cenderung kesulitan membedakan kelas-kelas yang memiliki perbedaan pola temporal halus, karena setiap pohon keputusan bekerja dengan pemisahan fitur statis, tanpa mempertimbangkan keterkaitan waktu antar titik sinyal.</p></li>
+<li><p>Kondisi ini memperkuat dugaan bahwa Random Forest kurang optimal jika langsung diterapkan pada data time series berdimensi tinggi tanpa proses ekstraksi fitur yang lebih representatif, seperti statistik domain waktu, domain frekuensi, atau transformasi sinyal. Tanpa tahap ekstraksi fitur tambahan, model cenderung mengalami kesulitan dalam mempelajari struktur temporal sinyal sEMG secara efektif.</p></li>
+</ul>
+<p><strong>3.3 Perbandingan dengan Model Baseline dan Implikasi</strong></p>
+<ul class="simple">
+<li><p>Jika dibandingkan dengan model 1-NN Euclidean, Random Forest menunjukkan performa yang lebih rendah baik dari sisi akurasi maupun stabilitas prediksi antar kelas. Hal ini menunjukkan bahwa meskipun Random Forest unggul pada banyak kasus klasifikasi tabular, penerapannya secara langsung pada data time series mentah belum tentu memberikan hasil yang optimal.</p></li>
+<li><p>Temuan ini menegaskan pentingnya pemilihan algoritma yang sesuai dengan karakteristik data. Untuk data sinyal sEMG yang bersifat sekuensial dan dinamis, pendekatan yang secara eksplisit memperhitungkan dimensi waktu, seperti Dynamic Time Warping (DTW) atau Convolutional Neural Network (CNN), diperkirakan akan memberikan performa yang lebih baik dibandingkan Random Forest berbasis fitur statis.</p></li>
+</ul>
+<p><strong>3.4 Kesimpulan Model Random Forest</strong></p>
+<ul class="simple">
+<li><p>Secara keseluruhan, model Random Forest dalam eksperimen ini belum memenuhi kriteria kesuksesan teknis yang ditetapkan. Meskipun menawarkan keunggulan dalam stabilitas dan fleksibilitas, keterbatasannya dalam menangani data time series mentah menyebabkan performa klasifikasi yang kurang optimal. Oleh karena itu, Random Forest pada penelitian ini berperan sebagai model pembanding (benchmark tambahan), bukan sebagai kandidat utama untuk deployment.</p></li>
+<li><p>Langkah selanjutnya yang direkomendasikan adalah mengembangkan model lanjutan yang lebih adaptif terhadap pola temporal sinyal sEMG, serta membandingkan hasilnya secara kuantitatif untuk menentukan model terbaik yang akan digunakan pada tahap deployment Streamlit.</p></li>
+</ul>
+</section>
+<section id="model-advanced-cnn-untuk-time-series">
+<h2><strong>4. (Model Advanced: CNN untuk Time Series:</strong>)<a class="headerlink" href="#model-advanced-cnn-untuk-time-series" title="Permalink to this heading">#</a></h2>
+<p>Sebagai pendekatan lanjutan (advanced model), penelitian ini mengimplementasikan Convolutional Neural Network (CNN) yang dirancang khusus untuk menangani data time series. CNN dipilih karena kemampuannya dalam mengekstraksi fitur lokal secara otomatis dari sinyal berurutan, seperti pola amplitudo, frekuensi lokal, dan transisi sinyal, tanpa memerlukan proses ekstraksi fitur manual. Pada konteks sinyal sEMG, CNN diharapkan mampu menangkap karakteristik kontraksi otot yang berbeda untuk setiap jenis gerakan tangan.</p>
+<p>Sebelum pelatihan model, data time series hasil preprocessing di-reshape ke dalam format tiga dimensi (jumlah_sampel, panjang_sinyal, 1), di mana dimensi terakhir merepresentasikan satu kanal sinyal. Proses ini diperlukan agar data sesuai dengan input layer pada arsitektur Conv1D. Dengan panjang sinyal sebesar 1500 titik, setiap sampel menyediakan informasi temporal yang cukup kaya untuk dipelajari oleh model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Conv1D</span><span class="p">,</span> <span class="n">MaxPooling1D</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span>
+
+<span class="c1"># Reshape untuk CNN (n_samples, n_timestamps, 1)</span>
+<span class="n">X_train_cnn</span> <span class="o">=</span> <span class="n">X_train_np</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">450</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">X_test_cnn</span> <span class="o">=</span> <span class="n">X_test_np</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">450</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Model CNN</span>
+<span class="n">model_cnn</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">Conv1D</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span>
+    <span class="n">MaxPooling1D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">Conv1D</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">MaxPooling1D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">Flatten</span><span class="p">(),</span>
+    <span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+    <span class="n">Dropout</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>
+    <span class="n">Dense</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">)</span>  <span class="c1"># 6 kelas</span>
+<span class="p">])</span>
+
+<span class="n">model_cnn</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+<span class="n">model_cnn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_cnn</span><span class="p">,</span> <span class="n">y_train_enc</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Prediksi</span>
+<span class="n">pred_cnn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">model_cnn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_cnn</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy (CNN):&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_enc</span><span class="p">,</span> <span class="n">pred_cnn</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_enc</span><span class="p">,</span> <span class="n">pred_cnn</span><span class="p">))</span>
+
+<span class="c1"># Confusion Matrix</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_enc</span><span class="p">,</span> <span class="n">pred_cnn</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix - CNN&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/keras/src/layers/convolutional/base_conv.py:113: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(activity_regularizer=activity_regularizer, **kwargs)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
+<span class=" -Color -Color-Bold">12/12</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">5s</span> 182ms/step - accuracy: 0.1980 - loss: 30.9042 - val_accuracy: 0.1556 - val_loss: 1.9270
+Epoch 2/10
+<span class=" -Color -Color-Bold">12/12</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 156ms/step - accuracy: 0.2222 - loss: 1.9674 - val_accuracy: 0.0222 - val_loss: 1.7926
+Epoch 3/10
+<span class=" -Color -Color-Bold">12/12</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 159ms/step - accuracy: 0.2403 - loss: 1.6908 - val_accuracy: 0.1444 - val_loss: 1.9968
+Epoch 4/10
+<span class=" -Color -Color-Bold">12/12</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 153ms/step - accuracy: 0.2253 - loss: 1.6627 - val_accuracy: 0.0333 - val_loss: 2.2826
+Epoch 5/10
+<span class=" -Color -Color-Bold">12/12</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 246ms/step - accuracy: 0.3625 - loss: 1.5536 - val_accuracy: 0.0556 - val_loss: 2.9360
+Epoch 6/10
+<span class=" -Color -Color-Bold">12/12</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 151ms/step - accuracy: 0.3581 - loss: 1.3914 - val_accuracy: 0.1222 - val_loss: 2.9283
+Epoch 7/10
+<span class=" -Color -Color-Bold">12/12</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 153ms/step - accuracy: 0.4627 - loss: 1.3324 - val_accuracy: 0.0667 - val_loss: 4.0021
+Epoch 8/10
+<span class=" -Color -Color-Bold">12/12</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 153ms/step - accuracy: 0.5003 - loss: 1.2019 - val_accuracy: 0.0333 - val_loss: 4.0517
+Epoch 9/10
+<span class=" -Color -Color-Bold">12/12</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">3s</span> 163ms/step - accuracy: 0.5595 - loss: 1.1075 - val_accuracy: 0.0667 - val_loss: 4.9359
+Epoch 10/10
+<span class=" -Color -Color-Bold">12/12</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">4s</span> 328ms/step - accuracy: 0.5669 - loss: 1.0952 - val_accuracy: 0.0889 - val_loss: 5.1309
+<span class=" -Color -Color-Bold">15/15</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">1s</span> 81ms/step
+Accuracy (CNN): 0.36
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       0.35      0.24      0.28        75
+           1       0.43      0.67      0.53        75
+           2       0.35      0.61      0.45        75
+           3       0.33      0.07      0.11        75
+           4       0.31      0.57      0.40        75
+           5       0.00      0.00      0.00        75
+
+    accuracy                           0.36       450
+   macro avg       0.30      0.36      0.30       450
+weighted avg       0.30      0.36      0.30       450
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
+/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
+/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_classification.py:1565: UndefinedMetricWarning: Precision is ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, f&quot;{metric.capitalize()} is&quot;, len(result))
+</pre></div>
+</div>
+<img alt="_images/9b6b14baecc688e3deaa39972728e2e8b86301317c010821cac2e30d68f3059b.png" src="_images/9b6b14baecc688e3deaa39972728e2e8b86301317c010821cac2e30d68f3059b.png" />
+</div>
+</div>
+<p><strong>4.1 Arsitektur dan Konfigurasi Model CNN</strong></p>
+<ul class="simple">
+<li><p>Arsitektur CNN yang digunakan terdiri dari dua lapisan Conv1D dengan jumlah filter bertambah (64 dan 128) dan ukuran kernel 3, yang berfungsi untuk mengekstraksi fitur lokal dari sinyal sEMG. Setiap lapisan konvolusi diikuti oleh MaxPooling1D untuk mereduksi dimensi temporal sekaligus mempertahankan fitur dominan. Setelah proses ekstraksi fitur, lapisan Flatten digunakan untuk mengubah representasi fitur menjadi vektor satu dimensi yang kemudian diproses oleh lapisan Dense.</p></li>
+<li><p>Untuk meningkatkan generalisasi dan mengurangi risiko overfitting, lapisan Dropout dengan tingkat 50% diterapkan sebelum lapisan output. Lapisan output menggunakan fungsi aktivasi softmax dengan 6 neuron, sesuai dengan jumlah kelas gerakan tangan. Model dikompilasi menggunakan optimizer Adam dan fungsi loss sparse categorical crossentropy, yang sesuai untuk kasus klasifikasi multi-kelas dengan label numerik. Proses pelatihan dilakukan selama 10 epoch dengan skema validation split sebesar 20% dari data latih.</p></li>
+</ul>
+<p><strong>4.2 Hasil Pelatihan dan Evaluasi Model CNN</strong></p>
+<ul class="simple">
+<li><p>Berdasarkan hasil pelatihan, model CNN menunjukkan peningkatan akurasi pada data latih secara bertahap hingga mencapai sekitar 56%, namun performa pada data validasi dan data uji menunjukkan nilai yang jauh lebih rendah. Pada tahap pengujian menggunakan data test, model CNN menghasilkan akurasi sebesar 36%, yang merupakan performa terendah dibandingkan model-model sebelumnya.</p></li>
+<li><p>Laporan klasifikasi menunjukkan bahwa beberapa kelas seperti Hook (kelas 1) dan Tip (kelas 2) memiliki nilai recall yang cukup tinggi, namun kelas Lateral (kelas 5) sama sekali tidak terprediksi oleh model, yang menyebabkan nilai precision dan F1-score bernilai nol. Hal ini mengindikasikan bahwa model gagal mempelajari representasi fitur yang cukup diskriminatif untuk seluruh kelas secara seimbang.</p></li>
+</ul>
+<p><strong>4.3 Analisis Confusion Matrix dan Perilaku Model</strong></p>
+<ul class="simple">
+<li><p>Visualisasi confusion matrix memperlihatkan distribusi kesalahan klasifikasi yang cukup signifikan. Model CNN cenderung mengelompokkan beberapa kelas ke kelas tertentu yang dominan, sehingga terjadi bias prediksi. Fenomena ini juga diperkuat oleh nilai validation accuracy yang sangat fluktuatif dan cenderung rendah selama proses pelatihan, yang mengindikasikan ketidakstabilan pembelajaran.</p></li>
+<li><p>Selain itu, munculnya peringatan (warning) terkait metrik precision yang tidak terdefinisi menandakan bahwa model tidak menghasilkan prediksi untuk satu atau lebih kelas tertentu. Hal ini merupakan indikasi kuat bahwa model mengalami kesulitan dalam proses konvergensi, kemungkinan disebabkan oleh keterbatasan jumlah data, kompleksitas sinyal, atau konfigurasi arsitektur dan hyperparameter yang belum optimal.</p></li>
+</ul>
+<p><strong>4.4 Diskusi dan Analisis Penyebab Performa Rendah</strong></p>
+<ul class="simple">
+<li><p>Beberapa faktor yang diduga menyebabkan rendahnya performa CNN antara lain adalah ukuran dataset yang relatif kecil untuk deep learning, panjang sinyal yang sangat besar (1500 titik), serta jumlah epoch yang terbatas. CNN umumnya memerlukan data yang lebih besar dan proses pelatihan yang lebih lama agar mampu mempelajari pola kompleks secara efektif. Selain itu, tidak diterapkannya teknik regularisasi lanjutan seperti batch normalization atau learning rate scheduling juga dapat memengaruhi stabilitas pelatihan.</p></li>
+<li><p>Hasil ini menunjukkan bahwa meskipun CNN secara teori sangat cocok untuk data time series, implementasi sederhana tanpa optimasi lebih lanjut belum mampu mengungguli model baseline pada dataset ini. Oleh karena itu, CNN dalam penelitian ini berfungsi sebagai eksperimen eksploratif, bukan sebagai model utama yang direkomendasikan untuk deployment.</p></li>
+</ul>
+<p><strong>4.5 Kesimpulan Model CNN</strong></p>
+<ul class="simple">
+<li><p>Secara keseluruhan, model CNN menunjukkan potensi dalam mempelajari pola sinyal sEMG, namun pada eksperimen ini performanya belum memenuhi kriteria kesuksesan teknis yang ditetapkan. Dengan akurasi 36%, model CNN belum layak digunakan untuk implementasi sistem klasifikasi gerakan tangan secara praktis. Hasil ini menegaskan bahwa pemilihan model harus mempertimbangkan keseimbangan antara kompleksitas model dan karakteristik dataset.</p></li>
+<li><p>Berdasarkan seluruh eksperimen, model 1-NN Euclidean masih memberikan performa terbaik di antara model yang diuji, meskipun belum mencapai target akurasi &gt;70%. Model lanjutan seperti CNN memerlukan optimasi lebih lanjut sebelum dapat dipertimbangkan sebagai solusi final.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="e-deployment-model">
+<h1><strong>E. DEPLOYMENT MODEL</strong><a class="headerlink" href="#e-deployment-model" title="Permalink to this heading">#</a></h1>
+<section id="simpan-model-terbaik">
+<h2><strong>1. Simpan Model Terbaik</strong><a class="headerlink" href="#simpan-model-terbaik" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Buat folder jika belum ada</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;saved_models/uas&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Pilih model terbaik (1-NN Euclidean, berdasarkan akurasi tertinggi dan stabilitas)</span>
+<span class="n">model_final</span> <span class="o">=</span> <span class="n">model_euclid</span>  <span class="c1"># Dari hasil evaluasi kamu</span>
+
+<span class="c1"># Simpan model dan encoder</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model_final</span><span class="p">,</span> <span class="s1">&#39;saved_models/uas/best_model.pkl&#39;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">le</span><span class="p">,</span> <span class="s1">&#39;saved_models/uas/label_encoder.pkl&#39;</span><span class="p">)</span>  <span class="c1"># le dari preprocessing</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model dan Encoder berhasil disimpan!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model dan Encoder berhasil disimpan!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> app.py
+<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+
+<span class="c1"># Load model dan encoder</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;saved_models/uas/best_model.pkl&#39;</span><span class="p">)</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;saved_models/uas/label_encoder.pkl&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mapping label ke nama gerakan (sesuai dataset: 1=Cylindrical, 2=Hook, dll.)</span>
+<span class="n">gerakan_map</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Cylindrical&quot;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;Hook&quot;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;Tip&quot;</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="s2">&quot;Palmar&quot;</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">:</span> <span class="s2">&quot;Spherical&quot;</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="s2">&quot;Lateral&quot;</span>
+<span class="p">}</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Klasifikasi Gerakan Tangan berdasarkan Sinyal sEMG&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Upload file sinyal time series (.txt, 1 baris dengan 1500 nilai) untuk prediksi gerakan tangan.&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Dataset: SemgHandMovementCh2 (6 kelas gerakan). Model: 1-NN Euclidean (Akurasi ~60%).&quot;</span><span class="p">)</span>
+
+<span class="c1"># Input: Upload file</span>
+<span class="n">uploaded_file</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">file_uploader</span><span class="p">(</span><span class="s2">&quot;Upload file .txt&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;txt&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">uploaded_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Load data (asumsikan 1 sampel, 1500 titik, format space-separated seperti dataset)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">uploaded_file</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1500</span><span class="p">)</span>  <span class="c1"># Reshape ke (1, 1500)</span>
+
+        <span class="c1"># Prediksi</span>
+        <span class="n">pred_encoded</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">pred_label</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">pred_encoded</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># Decode ke label asli (1-6)</span>
+        <span class="n">gerakan</span> <span class="o">=</span> <span class="n">gerakan_map</span><span class="p">[</span><span class="n">pred_label</span><span class="p">]</span>  <span class="c1"># Map ke nama gerakan</span>
+
+        <span class="n">st</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Prediksi Gerakan: **</span><span class="si">{</span><span class="n">gerakan</span><span class="si">}</span><span class="s2">** (Label: </span><span class="si">{</span><span class="n">pred_label</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Visualisasi sinyal</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">subheader</span><span class="p">(</span><span class="s2">&quot;Visualisasi Sinyal Input&quot;</span><span class="p">)</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">line_chart</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: Pastikan file berisi 1500 nilai numerik (space-separated). Detail: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;---&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;**Penjelasan:** Model menggunakan jarak Euclidean untuk klasifikasi time series. Demo UAS mengikuti CRISP-DM.&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;**Link GitHub:** [Tambahkan link repo kamu di sini]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing app.py
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>UAS Proyek: Klasifikasi Time Series Gerakan Tangan Menggunakan Dataset SemgHandMovementCh2</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-business-understanding"><strong>A. BUSINESS UNDERSTANDING</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang-bisnis"><strong>1. Latar Belakang Bisnis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permasalahan-bisnis"><strong>2. Permasalahan Bisnis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-bisnis"><strong>3. Tujuan Bisnis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriteria-kesuksesan-bisnis"><strong>4. Kriteria Kesuksesan Bisnis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pernyataan-masalah-data-science"><strong>5. Pernyataan Masalah Data Science</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-data-science"><strong>6. Tujuan Data Science</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriteria-evaluasi-teknis"><strong>7. Kriteria Evaluasi Teknis</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asumsi-dan-batasan"><strong>8. Asumsi dan Batasan</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#risiko-dan-mitigasi"><strong>9. Risiko dan Mitigasi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumber-dan-asal-usul-dataset"><strong>10. Sumber dan Asal Usul Dataset</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b-data-understanding"><strong>B. DATA UNDERSTANDING</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-akuisisi-data"><strong>1. Deskripsi Akuisisi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kode-untuk-load-dan-inspeksi-data"><strong>2. Kode untuk Load dan Inspeksi Data</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi"><strong>3. Visualisasi</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-hasil-eksplorasi-data"><strong>4. Insight Hasil Eksplorasi Data</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#c-data-preprocessing"><strong>C. DATA PREPROCESSING</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#d-modeling-dan-evaluasi"><strong>D. MODELING DAN EVALUASI</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-1-nearest-neighbor-1-nn-dengan-jarak-euclidean"><strong>1. Model 1-Nearest Neighbor (1-NN) dengan Jarak Euclidean</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-1-nearest-neighbor-1-nn-dengan-dynamic-time-warping-dtw"><strong>2. Model 1-Nearest Neighbor (1-NN) dengan Dynamic Time Warping (DTW)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-random-forest"><strong>3. (Model Random Forest:)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-advanced-cnn-untuk-time-series"><strong>4. (Model Advanced: CNN untuk Time Series:</strong>)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#e-deployment-model"><strong>E. DEPLOYMENT MODEL</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpan-model-terbaik"><strong>1. Simpan Model Terbaik</strong></a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

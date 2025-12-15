@@ -1,0 +1,73 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+## --- 1. Pemahaman Data (Pemeriksaan Dimensi) ---
+print("\n## 1. PEMAHAMAN DATA (DIMENSI)")
+print(f"Shape data latih (sampel, timesteps): {X_train_raw.shape}") # Harus (450, 1500)
+print(f"Shape label latih: {y_train_raw.shape}")
+
+# Periksa distribusi kelas
+unique, counts = np.unique(y_train_raw, return_counts=True)
+print(f"Distribusi kelas (0-5): {dict(zip(unique, counts))}")
+
+
+## --- 2. PERSIAPAN DATA (PREPROCESSING) ---
+
+# 2.1 Normalisasi/Standardisasi Data
+scaler = StandardScaler()
+# Standarisasi X_train
+X_train_scaled = scaler.fit_transform(X_train_raw.T).T
+# Standarisasi X_test menggunakan parameter dari X_train
+X_test_scaled = scaler.transform(X_test_raw.T).T
+
+# 2.2 Reshaping untuk Keras/TensorFlow (1D-CNN)
+# Format harus: (sampel, timesteps, fitur/dimensi)
+TIME_STEPS = X_train_scaled.shape[1]
+DIMENSIONS = 1 # Karena ini sinyal sEMG 1 channel
+
+X_train = X_train_scaled.reshape(-1, TIME_STEPS, DIMENSIONS)
+X_test = X_test_scaled.reshape(-1, TIME_STEPS, DIMENSIONS)
+
+# 2.3 One-Hot Encoding Label
+NUM_CLASSES = 6
+y_train = to_categorical(y_train_raw, num_classes=NUM_CLASSES)
+y_test_labels = y_test_raw # Simpan label asli untuk evaluasi
+
+print("Data telah dinormalisasi dan di-reshape.")
+print(f"Shape X_train akhir: {X_train.shape}")
+print(f"Shape y_train akhir (One-Hot): {y_train.shape}")
+------------------
+
+----- stdout -----
+
+## 1. PEMAHAMAN DATA (DIMENSI)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipython-input-2760874398.py[0m in [0;36m<cell line: 0>[0;34m()[0m
+[1;32m      1[0m [0;31m## --- 1. Pemahaman Data (Pemeriksaan Dimensi) ---[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0mprint[0m[0;34m([0m[0;34m"\n## 1. PEMAHAMAN DATA (DIMENSI)"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 3[0;31m [0mprint[0m[0;34m([0m[0;34mf"Shape data latih (sampel, timesteps): {X_train_raw.shape}"[0m[0;34m)[0m [0;31m# Harus (450, 1500)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      4[0m [0mprint[0m[0;34m([0m[0;34mf"Shape label latih: {y_train_raw.shape}"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;34m[0m[0m
+
+[0;31mNameError[0m: name 'X_train_raw' is not defined
+

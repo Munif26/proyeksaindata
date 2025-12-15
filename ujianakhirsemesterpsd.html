@@ -1,0 +1,1358 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>1. Business Understanding (Memahami Bisnis) &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ujianakhirsemesterpsd';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Prediksi Konsentrasi NO₂ di Kabupaten Bojonegoro dengan KNN Regression" href="prediksi_konsentrasino2_diarea_bjn.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to Proyek Sain Data
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="business_data_understanding.html"><strong>Business Understanding</strong></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="preprocessing_data.html"><strong>Preprocessing</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="penyeimbangdata_ucldataecoli.html"><strong>Penyeimbang Data (Data UCL Ecoli)</strong></a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="model_klasifikasi.html"><strong>Model Klasifikasi pada Dataset Ecoli</strong></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="knime_konstanz_information_miner.html"><strong>PROYEK PRA UTS PROYEK SAIN DATA</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="proyek_ujian_tengah_sementer_psd.html"><strong>UTS : Proyek Sains Data — Deteksi Penyakit Tiroid</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="prediksi_konsentrasino2_diarea_bjn.html"><strong>Prediksi Konsentrasi NO₂ di Kabupaten Bojonegoro dengan KNN Regression</strong></a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>1. Business Understanding (Memahami Bisnis)</strong></a></li>
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fujianakhirsemesterpsd.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ujianakhirsemesterpsd.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1. Business Understanding (Memahami Bisnis)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>1. Business Understanding (Memahami Bisnis)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-pustaka"><strong>2. Instalasi Pustaka</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mengunduh-dan-memuat-data"><strong>3. Mengunduh dan Memuat Data</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pemahaman-dan-persiapan-data-preprocessing"><strong>4. Pemahaman dan Persiapan Data (Preprocessing)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pemodelan-data-modeling-1d-cnn"><strong>5. Pemodelan Data (Modeling) - 1D CNN</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-evaluation"><strong>6. Evaluasi (Evaluation)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment-streamlit"><strong>7. Deployment (Streamlit)</strong></a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="business-understanding-memahami-bisnis">
+<h1><strong>1. Business Understanding (Memahami Bisnis)</strong><a class="headerlink" href="#business-understanding-memahami-bisnis" title="Permalink to this heading">#</a></h1>
+<p><strong>1.1 Latar Belakang Masalah</strong></p>
+<p>Sinyal sEMG (surface Electromyography) digunakan untuk membaca aktivitas otot tangan. Teknologi ini sangat penting di bidang:</p>
+<ul class="simple">
+<li><p>Prosthetic hand</p></li>
+<li><p>Robotik</p></li>
+<li><p>Rehabilitasi medis</p></li>
+<li><p>Human–Computer Interaction (HCI)</p></li>
+</ul>
+<p>Namun, sinyal sEMG berbentuk time series kompleks, sehingga perlu klasifikasi otomatis berbasis machine learning.</p>
+<p><strong>1.2 Tujuan Proyek</strong></p>
+<p>Membangun model klasifikasi time series yang mampu mengenali jenis gerakan tangan berdasarkan sinyal sEMG dari dataset SemgHandMovementCh2 dan dengan akurasi tinggi yang mampu mengidentifikasi secara otomatis salah satu dari enam gerakan dasar tangan (Cylindrical, Hook, Tip, Palmar, Spherical, Lateral) berdasarkan sinyal sEMG (electromyography) dari Channel 2.</p>
+<p><strong>1.3 Tujuan Analisis</strong></p>
+<ul class="simple">
+<li><p>Mengetahui pola sinyal sEMG untuk tiap gerakan tangan</p></li>
+<li><p>Melakukan preprocessing pada data time series</p></li>
+<li><p>Membangun model klasifikasi terbaik</p></li>
+<li><p>Mengevaluasi performa model</p></li>
+<li><p>Mendeploy model ke aplikasi web menggunakan Streamlit</p></li>
+</ul>
+<p><strong>1.4 Kriteria Keberhasilan</strong>
+Mencapai akurasi klasifikasi yang kompetitif (di atas 90%) pada data uji (test set).</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="instalasi-pustaka">
+<h1><strong>2. Instalasi Pustaka</strong><a class="headerlink" href="#instalasi-pustaka" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalasi Pustaka</span>
+<span class="c1"># Instalasi pustaka yang dibutuhkan</span>
+
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>pandas<span class="w"> </span>scikit-learn<span class="w"> </span>tensorflow<span class="w"> </span>matplotlib
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>streamlit
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: numpy in /usr/local/lib/python3.12/dist-packages (2.0.2)
+Requirement already satisfied: pandas in /usr/local/lib/python3.12/dist-packages (2.2.2)
+Requirement already satisfied: scikit-learn in /usr/local/lib/python3.12/dist-packages (1.6.1)
+Requirement already satisfied: tensorflow in /usr/local/lib/python3.12/dist-packages (2.19.0)
+Requirement already satisfied: matplotlib in /usr/local/lib/python3.12/dist-packages (3.10.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/local/lib/python3.12/dist-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.12/dist-packages (from pandas) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /usr/local/lib/python3.12/dist-packages (from pandas) (2025.2)
+Requirement already satisfied: scipy&gt;=1.6.0 in /usr/local/lib/python3.12/dist-packages (from scikit-learn) (1.16.3)
+Requirement already satisfied: joblib&gt;=1.2.0 in /usr/local/lib/python3.12/dist-packages (from scikit-learn) (1.5.2)
+Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /usr/local/lib/python3.12/dist-packages (from scikit-learn) (3.6.0)
+Requirement already satisfied: absl-py&gt;=1.0.0 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (1.4.0)
+Requirement already satisfied: astunparse&gt;=1.6.0 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (1.6.3)
+Requirement already satisfied: flatbuffers&gt;=24.3.25 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (25.9.23)
+Requirement already satisfied: gast!=0.5.0,!=0.5.1,!=0.5.2,&gt;=0.2.1 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (0.7.0)
+Requirement already satisfied: google-pasta&gt;=0.1.1 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (0.2.0)
+Requirement already satisfied: libclang&gt;=13.0.0 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (18.1.1)
+Requirement already satisfied: opt-einsum&gt;=2.3.2 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (3.4.0)
+Requirement already satisfied: packaging in /usr/local/lib/python3.12/dist-packages (from tensorflow) (25.0)
+Requirement already satisfied: protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,&lt;6.0.0dev,&gt;=3.20.3 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (5.29.5)
+Requirement already satisfied: requests&lt;3,&gt;=2.21.0 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (2.32.4)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.12/dist-packages (from tensorflow) (75.2.0)
+Requirement already satisfied: six&gt;=1.12.0 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (1.17.0)
+Requirement already satisfied: termcolor&gt;=1.1.0 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (3.2.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: typing-extensions&gt;=3.6.6 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (4.15.0)
+Requirement already satisfied: wrapt&gt;=1.11.0 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (2.0.1)
+Requirement already satisfied: grpcio&lt;2.0,&gt;=1.24.3 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (1.76.0)
+Requirement already satisfied: tensorboard~=2.19.0 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (2.19.0)
+Requirement already satisfied: keras&gt;=3.5.0 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (3.10.0)
+Requirement already satisfied: h5py&gt;=3.11.0 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (3.15.1)
+Requirement already satisfied: ml-dtypes&lt;1.0.0,&gt;=0.5.1 in /usr/local/lib/python3.12/dist-packages (from tensorflow) (0.5.4)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.12/dist-packages (from matplotlib) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.12/dist-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.12/dist-packages (from matplotlib) (4.61.0)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /usr/local/lib/python3.12/dist-packages (from matplotlib) (1.4.9)
+Requirement already satisfied: pillow&gt;=8 in /usr/local/lib/python3.12/dist-packages (from matplotlib) (11.3.0)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /usr/local/lib/python3.12/dist-packages (from matplotlib) (3.2.5)
+Requirement already satisfied: wheel&lt;1.0,&gt;=0.23.0 in /usr/local/lib/python3.12/dist-packages (from astunparse&gt;=1.6.0-&gt;tensorflow) (0.45.1)
+Requirement already satisfied: rich in /usr/local/lib/python3.12/dist-packages (from keras&gt;=3.5.0-&gt;tensorflow) (13.9.4)
+Requirement already satisfied: namex in /usr/local/lib/python3.12/dist-packages (from keras&gt;=3.5.0-&gt;tensorflow) (0.1.0)
+Requirement already satisfied: optree in /usr/local/lib/python3.12/dist-packages (from keras&gt;=3.5.0-&gt;tensorflow) (0.18.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorflow) (3.4.4)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorflow) (3.11)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorflow) (2.5.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2.21.0-&gt;tensorflow) (2025.11.12)
+Requirement already satisfied: markdown&gt;=2.6.8 in /usr/local/lib/python3.12/dist-packages (from tensorboard~=2.19.0-&gt;tensorflow) (3.10)
+Requirement already satisfied: tensorboard-data-server&lt;0.8.0,&gt;=0.7.0 in /usr/local/lib/python3.12/dist-packages (from tensorboard~=2.19.0-&gt;tensorflow) (0.7.2)
+Requirement already satisfied: werkzeug&gt;=1.0.1 in /usr/local/lib/python3.12/dist-packages (from tensorboard~=2.19.0-&gt;tensorflow) (3.1.4)
+Requirement already satisfied: markupsafe&gt;=2.1.1 in /usr/local/lib/python3.12/dist-packages (from werkzeug&gt;=1.0.1-&gt;tensorboard~=2.19.0-&gt;tensorflow) (3.0.3)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: markdown-it-py&gt;=2.2.0 in /usr/local/lib/python3.12/dist-packages (from rich-&gt;keras&gt;=3.5.0-&gt;tensorflow) (2.2.0)
+Requirement already satisfied: pygments&lt;3.0.0,&gt;=2.13.0 in /usr/local/lib/python3.12/dist-packages (from rich-&gt;keras&gt;=3.5.0-&gt;tensorflow) (2.19.2)
+Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.12/dist-packages (from markdown-it-py&gt;=2.2.0-&gt;rich-&gt;keras&gt;=3.5.0-&gt;tensorflow) (0.1.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting streamlit
+  Downloading streamlit-1.52.1-py3-none-any.whl.metadata (9.8 kB)
+Requirement already satisfied: altair!=5.4.0,!=5.4.1,&lt;7,&gt;=4.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (5.5.0)
+Requirement already satisfied: blinker&lt;2,&gt;=1.5.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (1.9.0)
+Requirement already satisfied: cachetools&lt;7,&gt;=4.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (6.2.2)
+Requirement already satisfied: click&lt;9,&gt;=7.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (8.3.1)
+Requirement already satisfied: numpy&lt;3,&gt;=1.23 in /usr/local/lib/python3.12/dist-packages (from streamlit) (2.0.2)
+Requirement already satisfied: packaging&gt;=20 in /usr/local/lib/python3.12/dist-packages (from streamlit) (25.0)
+Requirement already satisfied: pandas&lt;3,&gt;=1.4.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (2.2.2)
+Requirement already satisfied: pillow&lt;13,&gt;=7.1.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (11.3.0)
+Requirement already satisfied: protobuf&lt;7,&gt;=3.20 in /usr/local/lib/python3.12/dist-packages (from streamlit) (5.29.5)
+Requirement already satisfied: pyarrow&gt;=7.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (18.1.0)
+Requirement already satisfied: requests&lt;3,&gt;=2.27 in /usr/local/lib/python3.12/dist-packages (from streamlit) (2.32.4)
+Requirement already satisfied: tenacity&lt;10,&gt;=8.1.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (9.1.2)
+Requirement already satisfied: toml&lt;2,&gt;=0.10.1 in /usr/local/lib/python3.12/dist-packages (from streamlit) (0.10.2)
+Requirement already satisfied: typing-extensions&lt;5,&gt;=4.4.0 in /usr/local/lib/python3.12/dist-packages (from streamlit) (4.15.0)
+Requirement already satisfied: watchdog&lt;7,&gt;=2.1.5 in /usr/local/lib/python3.12/dist-packages (from streamlit) (6.0.0)
+Requirement already satisfied: gitpython!=3.1.19,&lt;4,&gt;=3.0.7 in /usr/local/lib/python3.12/dist-packages (from streamlit) (3.1.45)
+Collecting pydeck&lt;1,&gt;=0.8.0b4 (from streamlit)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading pydeck-0.9.1-py2.py3-none-any.whl.metadata (4.1 kB)
+Requirement already satisfied: tornado!=6.5.0,&lt;7,&gt;=6.0.3 in /usr/local/lib/python3.12/dist-packages (from streamlit) (6.5.1)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.12/dist-packages (from altair!=5.4.0,!=5.4.1,&lt;7,&gt;=4.0-&gt;streamlit) (3.1.6)
+Requirement already satisfied: jsonschema&gt;=3.0 in /usr/local/lib/python3.12/dist-packages (from altair!=5.4.0,!=5.4.1,&lt;7,&gt;=4.0-&gt;streamlit) (4.25.1)
+Requirement already satisfied: narwhals&gt;=1.14.2 in /usr/local/lib/python3.12/dist-packages (from altair!=5.4.0,!=5.4.1,&lt;7,&gt;=4.0-&gt;streamlit) (2.13.0)
+Requirement already satisfied: gitdb&lt;5,&gt;=4.0.1 in /usr/local/lib/python3.12/dist-packages (from gitpython!=3.1.19,&lt;4,&gt;=3.0.7-&gt;streamlit) (4.0.12)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/local/lib/python3.12/dist-packages (from pandas&lt;3,&gt;=1.4.0-&gt;streamlit) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.12/dist-packages (from pandas&lt;3,&gt;=1.4.0-&gt;streamlit) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /usr/local/lib/python3.12/dist-packages (from pandas&lt;3,&gt;=1.4.0-&gt;streamlit) (2025.2)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2.27-&gt;streamlit) (3.4.4)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2.27-&gt;streamlit) (3.11)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2.27-&gt;streamlit) (2.5.0)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.12/dist-packages (from requests&lt;3,&gt;=2.27-&gt;streamlit) (2025.11.12)
+Requirement already satisfied: smmap&lt;6,&gt;=3.0.1 in /usr/local/lib/python3.12/dist-packages (from gitdb&lt;5,&gt;=4.0.1-&gt;gitpython!=3.1.19,&lt;4,&gt;=3.0.7-&gt;streamlit) (5.0.2)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in /usr/local/lib/python3.12/dist-packages (from jinja2-&gt;altair!=5.4.0,!=5.4.1,&lt;7,&gt;=4.0-&gt;streamlit) (3.0.3)
+Requirement already satisfied: attrs&gt;=22.2.0 in /usr/local/lib/python3.12/dist-packages (from jsonschema&gt;=3.0-&gt;altair!=5.4.0,!=5.4.1,&lt;7,&gt;=4.0-&gt;streamlit) (25.4.0)
+Requirement already satisfied: jsonschema-specifications&gt;=2023.03.6 in /usr/local/lib/python3.12/dist-packages (from jsonschema&gt;=3.0-&gt;altair!=5.4.0,!=5.4.1,&lt;7,&gt;=4.0-&gt;streamlit) (2025.9.1)
+Requirement already satisfied: referencing&gt;=0.28.4 in /usr/local/lib/python3.12/dist-packages (from jsonschema&gt;=3.0-&gt;altair!=5.4.0,!=5.4.1,&lt;7,&gt;=4.0-&gt;streamlit) (0.37.0)
+Requirement already satisfied: rpds-py&gt;=0.7.1 in /usr/local/lib/python3.12/dist-packages (from jsonschema&gt;=3.0-&gt;altair!=5.4.0,!=5.4.1,&lt;7,&gt;=4.0-&gt;streamlit) (0.30.0)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.12/dist-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&lt;3,&gt;=1.4.0-&gt;streamlit) (1.17.0)
+Downloading streamlit-1.52.1-py3-none-any.whl (9.0 MB)
+?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/9.0 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">3.6/9.0 MB</span> <span class=" -Color -Color-Red">107.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">9.0/9.0 MB</span> <span class=" -Color -Color-Red">129.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">9.0/9.0 MB</span> <span class=" -Color -Color-Red">128.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">9.0/9.0 MB</span> <span class=" -Color -Color-Red">79.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hDownloading pydeck-0.9.1-py2.py3-none-any.whl (6.9 MB)
+?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/6.9 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━ <span class=" -Color -Color-Green">6.7/6.9 MB</span> <span class=" -Color -Color-Red">202.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">6.9/6.9 MB</span> <span class=" -Color -Color-Red">185.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">6.9/6.9 MB</span> <span class=" -Color -Color-Red">94.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: pydeck, streamlit
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed pydeck-0.9.1 streamlit-1.52.1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mengunduh-dan-memuat-data">
+<h1><strong>3. Mengunduh dan Memuat Data</strong><a class="headerlink" href="#mengunduh-dan-memuat-data" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">to_categorical</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Conv1D</span><span class="p">,</span> <span class="n">MaxPooling1D</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+
+<span class="c1"># --- Definisikan Fungsi untuk Memuat Data ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_ucr_data</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;\s+&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Pisahkan fitur (X) dan label (y)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="c1"># Label kelas untuk SemgHandMovementCh2 (1.0 hingga 6.0)</span>
+    <span class="c1"># Kita akan ubah menjadi 0 hingga 5 agar sesuai dengan indexing Python</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+
+<span class="c1"># --- PATH FILE DATASET ---</span>
+<span class="n">TRAIN_PATH</span> <span class="o">=</span> <span class="s1">&#39;SemgHandMovementCh2_TRAIN.txt&#39;</span>
+<span class="n">TEST_PATH</span> <span class="o">=</span> <span class="s1">&#39;SemgHandMovementCh2_TEST.txt&#39;</span>
+
+<span class="c1"># Memuat data</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">X_train_raw</span><span class="p">,</span> <span class="n">y_train_raw</span> <span class="o">=</span> <span class="n">load_ucr_data</span><span class="p">(</span><span class="n">TRAIN_PATH</span><span class="p">)</span>
+    <span class="n">X_test_raw</span><span class="p">,</span> <span class="n">y_test_raw</span> <span class="o">=</span> <span class="n">load_ucr_data</span><span class="p">(</span><span class="n">TEST_PATH</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data berhasil dimuat.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR: Pastikan file data &#39;SemgHandMovementCh2_TRAIN&#39; dan &#39;SemgHandMovementCh2_TEST&#39; telah diunggah ke Colab.&quot;</span><span class="p">)</span>
+    <span class="n">exit</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR: Pastikan file data &#39;SemgHandMovementCh2_TRAIN&#39; dan &#39;SemgHandMovementCh2_TEST&#39; telah diunggah ke Colab.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pemahaman-dan-persiapan-data-preprocessing">
+<h1><strong>4. Pemahaman dan Persiapan Data (Preprocessing)</strong><a class="headerlink" href="#pemahaman-dan-persiapan-data-preprocessing" title="Permalink to this heading">#</a></h1>
+<p>Kita akan melakukan pemeriksaan dimensi dan normalisasi data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## --- 1. Pemahaman Data (Pemeriksaan Dimensi) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## 1. PEMAHAMAN DATA (DIMENSI)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape data latih (sampel, timesteps): </span><span class="si">{</span><span class="n">X_train_raw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># Harus (450, 1500)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape label latih: </span><span class="si">{</span><span class="n">y_train_raw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Periksa distribusi kelas</span>
+<span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train_raw</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distribusi kelas (0-5): </span><span class="si">{</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">unique</span><span class="p">,</span><span class="w"> </span><span class="n">counts</span><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1">## --- 2. PERSIAPAN DATA (PREPROCESSING) ---</span>
+
+<span class="c1"># 2.1 Normalisasi/Standardisasi Data</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="c1"># Standarisasi X_train</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_raw</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="c1"># Standarisasi X_test menggunakan parameter dari X_train</span>
+<span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_raw</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># 2.2 Reshaping untuk Keras/TensorFlow (1D-CNN)</span>
+<span class="c1"># Format harus: (sampel, timesteps, fitur/dimensi)</span>
+<span class="n">TIME_STEPS</span> <span class="o">=</span> <span class="n">X_train_scaled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">DIMENSIONS</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Karena ini sinyal sEMG 1 channel</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train_scaled</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">TIME_STEPS</span><span class="p">,</span> <span class="n">DIMENSIONS</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test_scaled</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">TIME_STEPS</span><span class="p">,</span> <span class="n">DIMENSIONS</span><span class="p">)</span>
+
+<span class="c1"># 2.3 One-Hot Encoding Label</span>
+<span class="n">NUM_CLASSES</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_train_raw</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="n">NUM_CLASSES</span><span class="p">)</span>
+<span class="n">y_test_labels</span> <span class="o">=</span> <span class="n">y_test_raw</span> <span class="c1"># Simpan label asli untuk evaluasi</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data telah dinormalisasi dan di-reshape.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape X_train akhir: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape y_train akhir (One-Hot): </span><span class="si">{</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## 1. PEMAHAMAN DATA (DIMENSI)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipython-input-2760874398.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">## --- 1. Pemahaman Data (Pemeriksaan Dimensi) ---</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## 1. PEMAHAMAN DATA (DIMENSI)&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape data latih (sampel, timesteps): </span><span class="si">{</span><span class="n">X_train_raw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># Harus (450, 1500)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Shape label latih: </span><span class="si">{</span><span class="n">y_train_raw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+
+<span class="ne">NameError</span>: name &#39;X_train_raw&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pemodelan-data-modeling-1d-cnn">
+<h1><strong>5. Pemodelan Data (Modeling) - 1D CNN</strong><a class="headerlink" href="#pemodelan-data-modeling-1d-cnn" title="Permalink to this heading">#</a></h1>
+<p>Kita akan membangun dan melatih model 1D-CNN yang efektif untuk klasifikasi time series.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## --- 5. PEMODELAN DATA (1D-CNN) ---</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_1d_cnn_model</span><span class="p">(</span><span class="n">input_shape</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Membangun arsitektur 1D-CNN sederhana.&quot;&quot;&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+
+    <span class="c1"># Layer Konvolusi 1</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="n">input_shape</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
+
+    <span class="c1"># Layer Konvolusi 2</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
+
+    <span class="c1"># Layer Konvolusi 3</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">MaxPooling1D</span><span class="p">(</span><span class="n">pool_size</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.3</span><span class="p">))</span>
+
+    <span class="c1"># Flatten dan Dense Layers</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Flatten</span><span class="p">())</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span> <span class="c1"># Output layer untuk 6 kelas</span>
+
+    <span class="c1"># Kompilasi model</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+                  <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span>
+                  <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">model</span>
+
+<span class="c1"># Buat dan tampilkan ringkasan model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">build_1d_cnn_model</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">TIME_STEPS</span><span class="p">,</span> <span class="n">DIMENSIONS</span><span class="p">),</span> <span class="n">num_classes</span><span class="o">=</span><span class="n">NUM_CLASSES</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## 3. RINGKASAN MODEL 1D-CNN&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="c1"># Latih Model</span>
+<span class="c1"># Sesuaikan epochs dan batch_size jika diperlukan</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## 3. PELATIHAN MODEL...&quot;</span><span class="p">)</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="p">,</span>
+    <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="c1"># Jumlah epochs idealnya lebih tinggi, coba 50-100</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="c1"># Ambil 10% data latih untuk validasi</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/keras/src/layers/convolutional/base_conv.py:113: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(activity_regularizer=activity_regularizer, **kwargs)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## 3. RINGKASAN MODEL 1D-CNN
+</pre></div>
+</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "sequential"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ conv1d (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv1D</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1491</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)       │           <span style="color: #00af00; text-decoration-color: #00af00">704</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling1d (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling1D</span>)    │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">497</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)        │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">497</span>, <span style="color: #00af00; text-decoration-color: #00af00">64</span>)        │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv1d_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv1D</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">488</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)       │        <span style="color: #00af00; text-decoration-color: #00af00">82,048</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling1d_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling1D</span>)  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">162</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)       │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)             │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">162</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)       │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv1d_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv1D</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">153</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)       │       <span style="color: #00af00; text-decoration-color: #00af00">327,936</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ max_pooling1d_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">MaxPooling1D</span>)  │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">51</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)        │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dropout</span>)             │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">51</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)        │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ flatten (<span style="color: #0087ff; text-decoration-color: #0087ff">Flatten</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">13056</span>)          │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                   │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">500</span>)            │     <span style="color: #00af00; text-decoration-color: #00af00">6,528,500</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">6</span>)              │         <span style="color: #00af00; text-decoration-color: #00af00">3,006</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">6,942,194</span> (26.48 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">6,942,194</span> (26.48 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">0</span> (0.00 B)
+</pre>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## 3. PELATIHAN MODEL...
+Epoch 1/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">9s</span> 558ms/step - accuracy: 0.1469 - loss: 4.0361 - val_accuracy: 0.0222 - val_loss: 1.9856
+Epoch 2/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">9s</span> 479ms/step - accuracy: 0.3458 - loss: 1.6474 - val_accuracy: 0.2667 - val_loss: 1.8376
+Epoch 3/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">8s</span> 589ms/step - accuracy: 0.4764 - loss: 1.3713 - val_accuracy: 0.2667 - val_loss: 1.5979
+Epoch 4/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">6s</span> 481ms/step - accuracy: 0.5260 - loss: 1.2155 - val_accuracy: 0.2667 - val_loss: 1.4927
+Epoch 5/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">8s</span> 594ms/step - accuracy: 0.5360 - loss: 1.2406 - val_accuracy: 0.2667 - val_loss: 1.8601
+Epoch 6/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 830ms/step - accuracy: 0.5854 - loss: 1.0362 - val_accuracy: 0.1333 - val_loss: 2.0265
+Epoch 7/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">19s</span> 692ms/step - accuracy: 0.5799 - loss: 1.0698 - val_accuracy: 0.2889 - val_loss: 1.6841
+Epoch 8/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">13s</span> 939ms/step - accuracy: 0.6196 - loss: 1.0316 - val_accuracy: 0.2000 - val_loss: 2.3843
+Epoch 9/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">14s</span> 1s/step - accuracy: 0.6165 - loss: 0.9618 - val_accuracy: 0.3556 - val_loss: 1.1911
+Epoch 10/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">15s</span> 655ms/step - accuracy: 0.6728 - loss: 0.8312 - val_accuracy: 0.4889 - val_loss: 1.0215
+Epoch 11/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 757ms/step - accuracy: 0.7085 - loss: 0.6801 - val_accuracy: 0.4889 - val_loss: 1.1033
+Epoch 12/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">20s</span> 761ms/step - accuracy: 0.8070 - loss: 0.5427 - val_accuracy: 0.4889 - val_loss: 1.3156
+Epoch 13/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">8s</span> 612ms/step - accuracy: 0.7142 - loss: 0.6688 - val_accuracy: 0.4667 - val_loss: 1.1715
+Epoch 14/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">8s</span> 482ms/step - accuracy: 0.8178 - loss: 0.4660 - val_accuracy: 0.5778 - val_loss: 1.0863
+Epoch 15/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 542ms/step - accuracy: 0.8714 - loss: 0.3636 - val_accuracy: 0.6000 - val_loss: 0.9665
+Epoch 16/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">7s</span> 554ms/step - accuracy: 0.8725 - loss: 0.4376 - val_accuracy: 0.4444 - val_loss: 1.4749
+Epoch 17/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">7s</span> 488ms/step - accuracy: 0.8695 - loss: 0.3372 - val_accuracy: 0.3333 - val_loss: 3.4745
+Epoch 18/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">8s</span> 613ms/step - accuracy: 0.8964 - loss: 0.2407 - val_accuracy: 0.5333 - val_loss: 1.5803
+Epoch 19/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">9s</span> 473ms/step - accuracy: 0.9087 - loss: 0.2697 - val_accuracy: 0.6444 - val_loss: 0.9310
+Epoch 20/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 490ms/step - accuracy: 0.9239 - loss: 0.2486 - val_accuracy: 0.5556 - val_loss: 1.5029
+Epoch 21/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 498ms/step - accuracy: 0.9346 - loss: 0.1793 - val_accuracy: 0.4222 - val_loss: 3.0973
+Epoch 22/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 528ms/step - accuracy: 0.9449 - loss: 0.1521 - val_accuracy: 0.4889 - val_loss: 1.8959
+Epoch 23/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 586ms/step - accuracy: 0.9639 - loss: 0.1087 - val_accuracy: 0.5111 - val_loss: 2.2014
+Epoch 24/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">6s</span> 483ms/step - accuracy: 0.9676 - loss: 0.1135 - val_accuracy: 0.4667 - val_loss: 2.6317
+Epoch 25/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 474ms/step - accuracy: 0.9709 - loss: 0.0974 - val_accuracy: 0.3778 - val_loss: 2.8864
+Epoch 26/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">7s</span> 586ms/step - accuracy: 0.9503 - loss: 0.1359 - val_accuracy: 0.6889 - val_loss: 0.9851
+Epoch 27/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">6s</span> 475ms/step - accuracy: 0.9677 - loss: 0.0829 - val_accuracy: 0.6000 - val_loss: 1.7734
+Epoch 28/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">8s</span> 591ms/step - accuracy: 0.9790 - loss: 0.1406 - val_accuracy: 0.5111 - val_loss: 2.3033
+Epoch 29/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">7s</span> 503ms/step - accuracy: 0.9551 - loss: 0.2592 - val_accuracy: 0.4667 - val_loss: 2.6478
+Epoch 30/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 492ms/step - accuracy: 0.9594 - loss: 0.1291 - val_accuracy: 0.5556 - val_loss: 1.9739
+Epoch 31/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 472ms/step - accuracy: 0.9850 - loss: 0.0627 - val_accuracy: 0.5556 - val_loss: 2.3830
+Epoch 32/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 533ms/step - accuracy: 0.9794 - loss: 0.0675 - val_accuracy: 0.5778 - val_loss: 1.7512
+Epoch 33/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">7s</span> 584ms/step - accuracy: 0.9846 - loss: 0.0552 - val_accuracy: 0.5556 - val_loss: 2.9650
+Epoch 34/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">7s</span> 535ms/step - accuracy: 0.9854 - loss: 0.0508 - val_accuracy: 0.6000 - val_loss: 1.9064
+Epoch 35/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">8s</span> 645ms/step - accuracy: 0.9771 - loss: 0.0658 - val_accuracy: 0.5111 - val_loss: 2.2024
+Epoch 36/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">6s</span> 476ms/step - accuracy: 0.9645 - loss: 0.0910 - val_accuracy: 0.7333 - val_loss: 1.4596
+Epoch 37/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">7s</span> 578ms/step - accuracy: 0.9492 - loss: 0.1031 - val_accuracy: 0.4222 - val_loss: 3.9485
+Epoch 38/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 562ms/step - accuracy: 0.9865 - loss: 0.0426 - val_accuracy: 0.5778 - val_loss: 2.0996
+Epoch 39/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">9s</span> 483ms/step - accuracy: 0.9860 - loss: 0.0356 - val_accuracy: 0.6000 - val_loss: 1.8062
+Epoch 40/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 476ms/step - accuracy: 0.9869 - loss: 0.0406 - val_accuracy: 0.6000 - val_loss: 2.5440
+Epoch 41/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 492ms/step - accuracy: 0.9828 - loss: 0.0614 - val_accuracy: 0.5778 - val_loss: 3.1412
+Epoch 42/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 540ms/step - accuracy: 0.9774 - loss: 0.0860 - val_accuracy: 0.5778 - val_loss: 2.4957
+Epoch 43/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 589ms/step - accuracy: 0.9982 - loss: 0.0138 - val_accuracy: 0.6000 - val_loss: 2.5944
+Epoch 44/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">6s</span> 471ms/step - accuracy: 0.9893 - loss: 0.0260 - val_accuracy: 0.4889 - val_loss: 3.5339
+Epoch 45/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 480ms/step - accuracy: 0.9946 - loss: 0.0309 - val_accuracy: 0.6222 - val_loss: 2.0834
+Epoch 46/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 514ms/step - accuracy: 0.9991 - loss: 0.0184 - val_accuracy: 0.5556 - val_loss: 3.3822
+Epoch 47/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 586ms/step - accuracy: 0.9904 - loss: 0.0423 - val_accuracy: 0.4889 - val_loss: 4.2310
+Epoch 48/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">10s</span> 588ms/step - accuracy: 0.9679 - loss: 0.1090 - val_accuracy: 0.6222 - val_loss: 1.3434
+Epoch 49/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">6s</span> 484ms/step - accuracy: 0.9837 - loss: 0.0299 - val_accuracy: 0.5778 - val_loss: 2.1100
+Epoch 50/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">11s</span> 530ms/step - accuracy: 0.9813 - loss: 0.0591 - val_accuracy: 0.5778 - val_loss: 2.5795
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Conv1D</span><span class="p">,</span> <span class="n">GlobalAveragePooling1D</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">BatchNormalization</span><span class="p">,</span> <span class="n">Dense</span>
+
+<span class="c1">## --- 5B. PEMODELAN DATA (FCN) ---</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">build_fcn_model</span><span class="p">(</span><span class="n">input_shape</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Membangun arsitektur Fully Convolutional Network (FCN) sederhana.&quot;&quot;&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+
+    <span class="c1"># Blok Konvolusi 1</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="n">input_shape</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BatchNormalization</span><span class="p">())</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Blok Konvolusi 2</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BatchNormalization</span><span class="p">())</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Blok Konvolusi 3</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Conv1D</span><span class="p">(</span><span class="n">filters</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">))</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">BatchNormalization</span><span class="p">())</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Global Average Pooling (Mengganti Flatten &amp; Dense yang besar)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">GlobalAveragePooling1D</span><span class="p">())</span>
+
+    <span class="c1"># Output Layer</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Kompilasi model</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+                  <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span>
+                  <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">model</span>
+
+<span class="c1"># Buat, latih, dan evaluasi Model FCN</span>
+<span class="n">fcn_model</span> <span class="o">=</span> <span class="n">build_fcn_model</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">TIME_STEPS</span><span class="p">,</span> <span class="n">DIMENSIONS</span><span class="p">),</span> <span class="n">num_classes</span><span class="o">=</span><span class="n">NUM_CLASSES</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## 3B. RINGKASAN MODEL FCN&quot;</span><span class="p">)</span>
+<span class="n">fcn_model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## 3B. PELATIHAN MODEL FCN...&quot;</span><span class="p">)</span>
+<span class="n">fcn_history</span> <span class="o">=</span> <span class="n">fcn_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">X_train</span><span class="p">,</span>
+    <span class="n">y_train</span><span class="p">,</span>
+    <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="c1"># Gunakan jumlah epochs yang sama untuk perbandingan awal</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="c1"># Evaluasi FCN</span>
+<span class="n">fcn_loss</span><span class="p">,</span> <span class="n">fcn_accuracy</span> <span class="o">=</span> <span class="n">fcn_model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_test_labels</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="n">NUM_CLASSES</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## 4B. AKURASI FCN PADA DATA UJI&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi Model FCN pada Data Uji: </span><span class="si">{</span><span class="n">fcn_accuracy</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loss Model FCN pada Data Uji: </span><span class="si">{</span><span class="n">fcn_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Simpan Model FCN</span>
+<span class="n">fcn_model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;semg_fcn_model.h5&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model FCN telah disimpan sebagai &#39;semg_fcn_model.h5&#39;.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.12/dist-packages/keras/src/layers/convolutional/base_conv.py:113: UserWarning: Do not pass an `input_shape`/`input_dim` argument to a layer. When using Sequential models, prefer using an `Input(shape)` object as the first layer in the model instead.
+  super().__init__(activity_regularizer=activity_regularizer, **kwargs)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## 3B. RINGKASAN MODEL FCN
+</pre></div>
+</div>
+<div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold">Model: "sequential_1"</span>
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃<span style="font-weight: bold"> Layer (type)                    </span>┃<span style="font-weight: bold"> Output Shape           </span>┃<span style="font-weight: bold">       Param # </span>┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│ conv1d_3 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv1D</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1500</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)      │         <span style="color: #00af00; text-decoration-color: #00af00">1,152</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ batch_normalization             │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1500</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)      │           <span style="color: #00af00; text-decoration-color: #00af00">512</span> │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">BatchNormalization</span>)            │                        │               │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ activation (<span style="color: #0087ff; text-decoration-color: #0087ff">Activation</span>)         │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1500</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)      │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv1d_4 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv1D</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1500</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)      │       <span style="color: #00af00; text-decoration-color: #00af00">164,096</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ batch_normalization_1           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1500</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)      │         <span style="color: #00af00; text-decoration-color: #00af00">1,024</span> │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">BatchNormalization</span>)            │                        │               │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ activation_1 (<span style="color: #0087ff; text-decoration-color: #0087ff">Activation</span>)       │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1500</span>, <span style="color: #00af00; text-decoration-color: #00af00">256</span>)      │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ conv1d_5 (<span style="color: #0087ff; text-decoration-color: #0087ff">Conv1D</span>)               │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1500</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)      │        <span style="color: #00af00; text-decoration-color: #00af00">98,432</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ batch_normalization_2           │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1500</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)      │           <span style="color: #00af00; text-decoration-color: #00af00">512</span> │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">BatchNormalization</span>)            │                        │               │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ activation_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Activation</span>)       │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">1500</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)      │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ global_average_pooling1d        │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">128</span>)            │             <span style="color: #00af00; text-decoration-color: #00af00">0</span> │
+│ (<span style="color: #0087ff; text-decoration-color: #0087ff">GlobalAveragePooling1D</span>)        │                        │               │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_2 (<span style="color: #0087ff; text-decoration-color: #0087ff">Dense</span>)                 │ (<span style="color: #00d7ff; text-decoration-color: #00d7ff">None</span>, <span style="color: #00af00; text-decoration-color: #00af00">6</span>)              │           <span style="color: #00af00; text-decoration-color: #00af00">774</span> │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Total params: </span><span style="color: #00af00; text-decoration-color: #00af00">266,502</span> (1.02 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">265,478</span> (1.01 MB)
+</pre>
+</div><div class="output text_html"><pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace"><span style="font-weight: bold"> Non-trainable params: </span><span style="color: #00af00; text-decoration-color: #00af00">1,024</span> (4.00 KB)
+</pre>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## 3B. PELATIHAN MODEL FCN...
+Epoch 1/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">48s</span> 3s/step - accuracy: 0.2521 - loss: 1.7360 - val_accuracy: 0.0000e+00 - val_loss: 1.9880
+Epoch 2/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">25s</span> 2s/step - accuracy: 0.3806 - loss: 1.5546 - val_accuracy: 0.2667 - val_loss: 1.8585
+Epoch 3/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">41s</span> 2s/step - accuracy: 0.3751 - loss: 1.4907 - val_accuracy: 0.4667 - val_loss: 1.5134
+Epoch 4/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">41s</span> 2s/step - accuracy: 0.4222 - loss: 1.4312 - val_accuracy: 0.2667 - val_loss: 1.3384
+Epoch 5/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">46s</span> 2s/step - accuracy: 0.4207 - loss: 1.4749 - val_accuracy: 0.9333 - val_loss: 0.9313
+Epoch 6/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">25s</span> 2s/step - accuracy: 0.4552 - loss: 1.4127 - val_accuracy: 0.3556 - val_loss: 1.0501
+Epoch 7/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">25s</span> 2s/step - accuracy: 0.4175 - loss: 1.4454 - val_accuracy: 0.2889 - val_loss: 0.9858
+Epoch 8/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">46s</span> 2s/step - accuracy: 0.4539 - loss: 1.3927 - val_accuracy: 0.5778 - val_loss: 0.8164
+Epoch 9/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">44s</span> 3s/step - accuracy: 0.4333 - loss: 1.3827 - val_accuracy: 0.7111 - val_loss: 0.7218
+Epoch 10/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">28s</span> 2s/step - accuracy: 0.4347 - loss: 1.3947 - val_accuracy: 0.4667 - val_loss: 0.9954
+Epoch 11/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">39s</span> 2s/step - accuracy: 0.4293 - loss: 1.4065 - val_accuracy: 0.9556 - val_loss: 0.7109
+Epoch 12/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">25s</span> 2s/step - accuracy: 0.4669 - loss: 1.3354 - val_accuracy: 0.2889 - val_loss: 0.9497
+Epoch 13/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">41s</span> 2s/step - accuracy: 0.4591 - loss: 1.3183 - val_accuracy: 0.4000 - val_loss: 0.8824
+Epoch 14/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">25s</span> 2s/step - accuracy: 0.4573 - loss: 1.3643 - val_accuracy: 0.2667 - val_loss: 1.1629
+Epoch 15/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">26s</span> 2s/step - accuracy: 0.4231 - loss: 1.3653 - val_accuracy: 0.2667 - val_loss: 1.1033
+Epoch 16/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">40s</span> 2s/step - accuracy: 0.4689 - loss: 1.3104 - val_accuracy: 0.4222 - val_loss: 1.0446
+Epoch 17/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">40s</span> 2s/step - accuracy: 0.4925 - loss: 1.3225 - val_accuracy: 0.2889 - val_loss: 1.1783
+Epoch 18/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">24s</span> 2s/step - accuracy: 0.4624 - loss: 1.3122 - val_accuracy: 0.2667 - val_loss: 1.3830
+Epoch 19/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">42s</span> 2s/step - accuracy: 0.4529 - loss: 1.3131 - val_accuracy: 0.2667 - val_loss: 1.5890
+Epoch 20/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">25s</span> 2s/step - accuracy: 0.4906 - loss: 1.2776 - val_accuracy: 0.2667 - val_loss: 1.7461
+Epoch 21/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">40s</span> 2s/step - accuracy: 0.4770 - loss: 1.2835 - val_accuracy: 0.2667 - val_loss: 1.6745
+Epoch 22/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">25s</span> 2s/step - accuracy: 0.4649 - loss: 1.2960 - val_accuracy: 0.2667 - val_loss: 1.8611
+Epoch 23/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">41s</span> 2s/step - accuracy: 0.5223 - loss: 1.2640 - val_accuracy: 0.2444 - val_loss: 2.3450
+Epoch 24/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">25s</span> 2s/step - accuracy: 0.4428 - loss: 1.3307 - val_accuracy: 0.2667 - val_loss: 2.2228
+Epoch 25/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">25s</span> 2s/step - accuracy: 0.4974 - loss: 1.2564 - val_accuracy: 0.2444 - val_loss: 2.8005
+Epoch 26/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">41s</span> 2s/step - accuracy: 0.4903 - loss: 1.2759 - val_accuracy: 0.2667 - val_loss: 2.0998
+Epoch 27/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">25s</span> 2s/step - accuracy: 0.5477 - loss: 1.2366 - val_accuracy: 0.2667 - val_loss: 2.6174
+Epoch 28/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">25s</span> 2s/step - accuracy: 0.5280 - loss: 1.2699 - val_accuracy: 0.2000 - val_loss: 2.8183
+Epoch 29/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">42s</span> 2s/step - accuracy: 0.5407 - loss: 1.1871 - val_accuracy: 0.2667 - val_loss: 2.2597
+Epoch 30/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">25s</span> 2s/step - accuracy: 0.5293 - loss: 1.2263 - val_accuracy: 0.2222 - val_loss: 2.9674
+Epoch 31/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">41s</span> 2s/step - accuracy: 0.4577 - loss: 1.2813 - val_accuracy: 0.2667 - val_loss: 2.4158
+Epoch 32/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">41s</span> 2s/step - accuracy: 0.5274 - loss: 1.2068 - val_accuracy: 0.2444 - val_loss: 2.6253
+Epoch 33/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">41s</span> 2s/step - accuracy: 0.4840 - loss: 1.2365 - val_accuracy: 0.1556 - val_loss: 2.8679
+Epoch 34/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">26s</span> 2s/step - accuracy: 0.5248 - loss: 1.1906 - val_accuracy: 0.2222 - val_loss: 2.7551
+Epoch 35/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">26s</span> 2s/step - accuracy: 0.5535 - loss: 1.1567 - val_accuracy: 0.1556 - val_loss: 2.5029
+Epoch 36/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">26s</span> 2s/step - accuracy: 0.5335 - loss: 1.1854 - val_accuracy: 0.2444 - val_loss: 2.2675
+Epoch 37/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">40s</span> 2s/step - accuracy: 0.5096 - loss: 1.2087 - val_accuracy: 0.2222 - val_loss: 2.1535
+Epoch 38/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">26s</span> 2s/step - accuracy: 0.5148 - loss: 1.1901 - val_accuracy: 0.1111 - val_loss: 2.7953
+Epoch 39/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">27s</span> 2s/step - accuracy: 0.5709 - loss: 1.1619 - val_accuracy: 0.2444 - val_loss: 2.1428
+Epoch 40/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">27s</span> 2s/step - accuracy: 0.5724 - loss: 1.1485 - val_accuracy: 0.2000 - val_loss: 2.2138
+Epoch 41/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">39s</span> 2s/step - accuracy: 0.5535 - loss: 1.1764 - val_accuracy: 0.2444 - val_loss: 2.6266
+Epoch 42/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">26s</span> 2s/step - accuracy: 0.5760 - loss: 1.1495 - val_accuracy: 0.1778 - val_loss: 2.5794
+Epoch 43/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">41s</span> 2s/step - accuracy: 0.5484 - loss: 1.1957 - val_accuracy: 0.0667 - val_loss: 3.5594
+Epoch 44/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">25s</span> 2s/step - accuracy: 0.5715 - loss: 1.1499 - val_accuracy: 0.0667 - val_loss: 2.5304
+Epoch 45/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">42s</span> 2s/step - accuracy: 0.5239 - loss: 1.2040 - val_accuracy: 0.4444 - val_loss: 1.8419
+Epoch 46/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">26s</span> 2s/step - accuracy: 0.5371 - loss: 1.1649 - val_accuracy: 0.2667 - val_loss: 2.1797
+Epoch 47/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">42s</span> 2s/step - accuracy: 0.6284 - loss: 1.0793 - val_accuracy: 0.2000 - val_loss: 2.5374
+Epoch 48/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">26s</span> 2s/step - accuracy: 0.5664 - loss: 1.1521 - val_accuracy: 0.1556 - val_loss: 2.9616
+Epoch 49/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">27s</span> 2s/step - accuracy: 0.5700 - loss: 1.1187 - val_accuracy: 0.1556 - val_loss: 2.2775
+Epoch 50/50
+<span class=" -Color -Color-Bold">13/13</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">40s</span> 2s/step - accuracy: 0.5700 - loss: 1.0826 - val_accuracy: 0.0889 - val_loss: 2.0200
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:You are saving your model as an HDF5 file via `model.save()` or `keras.saving.save_model(model)`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save(&#39;my_model.keras&#39;)` or `keras.saving.save_model(model, &#39;my_model.keras&#39;)`. 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## 4B. AKURASI FCN PADA DATA UJI
+Akurasi Model FCN pada Data Uji: 23.78%
+Loss Model FCN pada Data Uji: 12.0270
+Model FCN telah disimpan sebagai &#39;semg_fcn_model.h5&#39;.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="evaluasi-evaluation">
+<h1><strong>6. Evaluasi (Evaluation)</strong><a class="headerlink" href="#evaluasi-evaluation" title="Permalink to this heading">#</a></h1>
+<p>Mengukur performa model pada data uji dan visualisasi hasilnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## --- 6. EVALUASI MODEL ---</span>
+
+<span class="c1"># 6.1 Menghitung Akurasi pada Data Uji</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## 4. AKURASI PADA DATA UJI&quot;</span><span class="p">)</span>
+<span class="n">loss</span><span class="p">,</span> <span class="n">accuracy</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">y_test_labels</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="n">NUM_CLASSES</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi Model pada Data Uji: </span><span class="si">{</span><span class="n">accuracy</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loss Model pada Data Uji: </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 6.2 Laporan Klasifikasi Rinci</span>
+<span class="c1"># Prediksi</span>
+<span class="n">y_pred_proba</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">y_pred_proba</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Laporan Klasifikasi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">## 4. LAPORAN KLASIFIKASI (Precision, Recall, F1-Score)&quot;</span><span class="p">)</span>
+<span class="c1"># Label 0=Cylindrical, 1=Hook, 2=Tip, 3=Palmar, 4=Spherical, 5=Lateral</span>
+<span class="n">target_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Cylindrical&#39;</span><span class="p">,</span> <span class="s1">&#39;Hook&#39;</span><span class="p">,</span> <span class="s1">&#39;Tip&#39;</span><span class="p">,</span> <span class="s1">&#39;Palmar&#39;</span><span class="p">,</span> <span class="s1">&#39;Spherical&#39;</span><span class="p">,</span> <span class="s1">&#39;Lateral&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_labels</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">target_names</span><span class="p">))</span>
+
+<span class="c1"># 6.3 Visualisasi Confusion Matrix</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_labels</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span>
+            <span class="n">xticklabels</span><span class="o">=</span><span class="n">target_names</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">target_names</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Predicted Label&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## 4. AKURASI PADA DATA UJI
+Akurasi Model pada Data Uji: 42.89%
+Loss Model pada Data Uji: 5.1476
+<span class=" -Color -Color-Bold">15/15</span> <span class=" -Color -Color-Green">━━━━━━━━━━━━━━━━━━━━</span> <span class=" -Color -Color-Bold">2s</span> 110ms/step
+
+## 4. LAPORAN KLASIFIKASI (Precision, Recall, F1-Score)
+              precision    recall  f1-score   support
+
+ Cylindrical       0.53      0.52      0.53        75
+        Hook       0.38      0.67      0.49        75
+         Tip       0.73      0.32      0.44        75
+      Palmar       0.34      0.47      0.39        75
+   Spherical       0.40      0.32      0.36        75
+     Lateral       0.43      0.28      0.34        75
+
+    accuracy                           0.43       450
+   macro avg       0.47      0.43      0.42       450
+weighted avg       0.47      0.43      0.42       450
+</pre></div>
+</div>
+<img alt="_images/1e22c36e0c76e61812657492dd36d8aa8e27f3b02f528a0442d29f6156c5f494.png" src="_images/1e22c36e0c76e61812657492dd36d8aa8e27f3b02f528a0442d29f6156c5f494.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="deployment-streamlit">
+<h1><strong>7. Deployment (Streamlit)</strong><a class="headerlink" href="#deployment-streamlit" title="Permalink to this heading">#</a></h1>
+<p>Setelah model dievaluasi, Anda perlu menyimpan model dan membuat script Streamlit terpisah.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## --- 7. DEPLOYMENT (Penyimpanan Model) ---</span>
+
+<span class="c1"># Simpan model untuk digunakan di Streamlit</span>
+<span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;semg_hand_movement_cnn_model.h5&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Model telah disimpan sebagai &#39;semg_hand_movement_cnn_model.h5&#39;.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Simpan Scaler (penting agar preprocessing di Streamlit sama dengan saat training)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="s1">&#39;scaler.pkl&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Scaler telah disimpan sebagai &#39;scaler.pkl&#39;.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Simpan target_names untuk pemetaan label</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;target_names.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">target_names</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Target names telah disimpan sebagai &#39;target_names.json&#39;.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipython-input-2045915168.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Simpan model untuk digunakan di Streamlit</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;semg_hand_movement_cnn_model.h5&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Model telah disimpan sebagai &#39;semg_hand_movement_cnn_model.h5&#39;.&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+
+<span class="ne">NameError</span>: name &#39;model&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="prediksi_konsentrasino2_diarea_bjn.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Prediksi Konsentrasi NO₂ di Kabupaten Bojonegoro dengan KNN Regression</strong></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>1. Business Understanding (Memahami Bisnis)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-pustaka"><strong>2. Instalasi Pustaka</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mengunduh-dan-memuat-data"><strong>3. Mengunduh dan Memuat Data</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pemahaman-dan-persiapan-data-preprocessing"><strong>4. Pemahaman dan Persiapan Data (Preprocessing)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pemodelan-data-modeling-1d-cnn"><strong>5. Pemodelan Data (Modeling) - 1D CNN</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-evaluation"><strong>6. Evaluasi (Evaluation)</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment-streamlit"><strong>7. Deployment (Streamlit)</strong></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
